@@ -1,0 +1,256 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Features v1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-10-17 12:43:43+0000\n"
+"Last-Translator: Matt <matt@woothemes.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: classes/class-woothemes-features.php:74
+#@ woothemes-features
+msgctxt "post type general name"
+msgid "Features"
+msgstr ""
+
+#: classes/class-woothemes-features.php:75
+#@ woothemes-features
+msgctxt "post type singular name"
+msgid "Feature"
+msgstr ""
+
+#: classes/class-woothemes-features.php:76
+#@ woothemes-features
+msgctxt "feature"
+msgid "Add New"
+msgstr ""
+
+#: classes/class-woothemes-features.php:77
+#, php-format
+#@ woothemes-features
+msgid "Add New %s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:77
+#: classes/class-woothemes-features.php:78
+#: classes/class-woothemes-features.php:79
+#@ woothemes-features
+msgid "Feature"
+msgstr ""
+
+#: classes/class-woothemes-features.php:78
+#, php-format
+#@ woothemes-features
+msgid "Edit %s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:79
+#, php-format
+#@ woothemes-features
+msgid "New %s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:80
+#, php-format
+#@ woothemes-features
+msgid "All %s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:80
+#: classes/class-woothemes-features.php:82
+#: classes/class-woothemes-features.php:83
+#: classes/class-woothemes-features.php:84
+#: classes/class-woothemes-features.php:86
+#: classes/class-woothemes-widget-features.php:44
+#@ woothemes-features
+msgid "Features"
+msgstr ""
+
+#: classes/class-woothemes-features.php:81
+#, php-format
+#@ woothemes-features
+msgid "View %s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:81
+#@ woothemes-features
+msgid "Testimonial"
+msgstr ""
+
+#: classes/class-woothemes-features.php:82
+#, php-format
+#@ woothemes-features
+msgid "Search %a"
+msgstr ""
+
+#: classes/class-woothemes-features.php:83
+#, php-format
+#@ woothemes-features
+msgid "No %s Found"
+msgstr ""
+
+#: classes/class-woothemes-features.php:84
+#, php-format
+#@ woothemes-features
+msgid "No %s Found In Trash"
+msgstr ""
+
+#: classes/class-woothemes-features.php:146
+#@ woothemes-features
+msgid "Image"
+msgstr ""
+
+#: classes/class-woothemes-features.php:180
+#, php-format
+#@ woothemes-features
+msgid "Feature updated. %sView feature%s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:181
+#@ woothemes-features
+msgid "Custom field updated."
+msgstr ""
+
+#: classes/class-woothemes-features.php:182
+#@ woothemes-features
+msgid "Custom field deleted."
+msgstr ""
+
+#: classes/class-woothemes-features.php:183
+#@ woothemes-features
+msgid "Feature updated."
+msgstr ""
+
+#. translators: %s: date and time of the revision 
+#: classes/class-woothemes-features.php:185
+#, php-format
+#@ woothemes-features
+msgid "Feature restored to revision from %s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:186
+#, php-format
+#@ woothemes-features
+msgid "Feature published. %sView feature%s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:187
+#@ default
+msgid "Feature saved."
+msgstr ""
+
+#: classes/class-woothemes-features.php:188
+#, php-format
+#@ woothemes-features
+msgid "Feature submitted. %sPreview feature%s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:189
+#, php-format
+#@ woothemes-features
+msgid "Feature scheduled for: %1$s. %2$sPreview feature%3$s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:191
+#@ default
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: classes/class-woothemes-features.php:192
+#, php-format
+#@ woothemes-features
+msgid "Feature draft updated. %sPreview feature%s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:208
+#@ woothemes-features
+msgid "Enter the feature title here"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:42
+#@ woothemes-features
+msgid "Recent features listed on your site."
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:149
+#@ woothemes-features
+msgid "Title (optional):"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:154
+#@ woothemes-features
+msgid "Limit:"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:159
+#@ woothemes-features
+msgid "Image Size (in pixels):"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:164
+#@ woothemes-features
+msgid "Order By:"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:173
+#@ woothemes-features
+msgid "Order Direction:"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:182
+#@ woothemes-features
+msgid "Specific ID (optional):"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:185
+#@ woothemes-features
+msgid "Display a specific testimonial, rather than a list."
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:196
+#@ woothemes-features
+msgid "No Order"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:197
+#@ woothemes-features
+msgid "Entry ID"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:198
+#@ woothemes-features
+msgid "Title"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:199
+#@ woothemes-features
+msgid "Date Added"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:200
+#@ woothemes-features
+msgid "Specified Order Setting"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:211
+#@ woothemes-features
+msgid "Ascending"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:212
+#@ woothemes-features
+msgid "Descending"
+msgstr ""
+
