@@ -14,6 +14,13 @@ function woothemes_get_features ( $args = '' ) {
 } // End woothemes_get_features()
 }
 
+/**
+ * Enable the usage of do_action( 'woothemes_features' ) to display features within a theme/plugin.
+ *
+ * @since  1.0.0
+ */
+add_action( 'woothemes_features', 'woothemes_features' );
+
 if ( ! function_exists( 'woothemes_features' ) ) {
 /**
  * Display or return HTML-formatted testimonials.
