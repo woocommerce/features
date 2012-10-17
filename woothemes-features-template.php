@@ -65,7 +65,15 @@ function woothemes_features ( $args = '' ) {
 				setup_postdata( $post );
 				
 				$class = 'feature';
-				 if( ( 0 == $i % $args['per_row'] ) || count( $query ) == $i ) { $class .= ' last'; }
+
+				if ( $i % $args['per_row'] == 0 ) {
+					$class .= ' last';
+				}
+				elseif ( ( $i - 1 ) % $args['per_row'] == 0 ) {
+					$class .= ' first';
+				}
+
+
 				$html .= '<div class="' . esc_attr( $class ) . '">';
 
 				// Optionally display the image, if it is available.
