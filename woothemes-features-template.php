@@ -82,6 +82,7 @@ function woothemes_features ( $args = '' ) {
 				$html .= '<div class="feature-content">' . get_the_content() . '</div>' . "\n";
 				$html .= '</div><!--/.feature-->' . "\n";
 			}
+				$html .= '<div class="fix"></div><!--/.fix-->' . "\n";
 			$html .= '</div><!--/.features-->' . "\n";
 
 			wp_reset_postdata();
