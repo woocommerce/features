@@ -39,7 +39,8 @@ function woothemes_features ( $args = '' ) {
 		'echo' => true, 
 		'size' => 50, 
 		'per_row' => 3, 
-		'link_title' => true
+		'link_title' => true, 
+		'title' => ''
 	);
 	
 	$args = wp_parse_args( $args, $defaults );
@@ -55,43 +56,58 @@ function woothemes_features ( $args = '' ) {
 
 		// The Display.
 		if ( ! is_wp_error( $query ) && is_array( $query ) && count( $query ) > 0 ) {
-
+			$html .= '<div class="widget widget_woothemes_features">' . "\n";
 			$html .= '<div class="features">' . "\n";
+
+			if ( '' != $args['title'] ) {
+				$html .= '<h2>' . esc_html( $args['title'] ) . '</h2>' . "\n";
+			}
 			
+			// Begin templating logic.
+			$tpl = '<div class="%%CLASS%%">%%IMAGE%%<h3 class="feature-title">%%TITLE%%</h3><div class="feature-content">%%CONTENT%%</div></div>';
+			$tpl = apply_filters( 'woothemes_features_item_template', $tpl, $args );
+
 			$i = 0;
 			foreach ( $query as $post ) {
+				$template = $tpl;
 				$i++;
 
 				setup_postdata( $post );
 				
 				$class = 'feature';
 
-				if ( $i % $args['per_row'] == 0 ) {
+				if ( count( $query ) == $i || ( 0 == $i % $args['per_row'] ) ) {
 					$class .= ' last';
-				}
-				elseif ( ( $i - 1 ) % $args['per_row'] == 0 ) {
+				} elseif ( 0 == ( $i - 1 ) % $args['per_row'] && count( $query ) != $i ) {
 					$class .= ' first';
 				}
 
-
-				$html .= '<div class="' . esc_attr( $class ) . '">';
-
-				// Optionally display the image, if it is available.
-				if ( isset( $post->image ) && ( '' != $post->image ) ) {
-					$html .= $post->image;
-				}
 
 				$title = get_the_title();
 				if ( true == $args['link_title'] ) {
 					$title = '<a href="' . esc_url( get_permalink( get_the_ID() ) ) . '" title="' . esc_attr( $title ) . '">' . $title . '</a>';
 				}
 
-				$html .= '<h3 class="feature-title">' . $title . '</h3>' . "\n";
-				$html .= '<div class="feature-content">' . get_the_content() . '</div>' . "\n";
-				$html .= '</div><!--/.feature-->' . "\n";
+				// Optionally display the image, if it is available.
+				if ( isset( $post->image ) && ( '' != $post->image ) ) {
+					$template = str_replace( '%%IMAGE%%', $post->image, $template );
+				} else {
+					$template = str_replace( '%%IMAGE%%', '', $template );
+				}
+
+				$template = str_replace( '%%CLASS%%', $class, $template );
+				$template = str_replace( '%%TITLE%%', $title, $template );
+				$template = str_replace( '%%CONTENT%%', get_the_content(), $template );
+
+				$html .= $template;
+
+				if( ( 0 == $i % $args['per_row'] ) ) {
+					$html .= '<div class="fix"></div>' . "\n";
+				}
 			}
-				$html .= '<div class="fix"></div><!--/.fix-->' . "\n";
+
 			$html .= '</div><!--/.features-->' . "\n";
+			$html .= '</div><!--/.widget widget_woothemes_features-->' . "\n";
 
 			wp_reset_postdata();
 		}

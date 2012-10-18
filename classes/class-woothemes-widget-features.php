@@ -67,21 +67,22 @@ class WooThemes_Widget_Features extends WP_Widget {
 		$title = apply_filters('widget_title', $instance['title'], $instance, $this->id_base );
 			
 		/* Before widget (defined by themes). */
-		echo $before_widget;
+		// echo $before_widget;
+
+		$args = array();
 
 		/* Display the widget title if one was input (before and after defined by themes). */
-		if ( $title ) { echo $before_title . $title . $after_title; }
+		if ( $title ) { $args['title'] = $title; }
 		
 		/* Widget content. */
 		// Add actions for plugins/themes to hook onto.
 		do_action( $this->woothemes_widget_cssclass . '_top' );
-		
-		$args = array();
 
 		// Integer values.
 		if ( isset( $instance['limit'] ) && ( 0 < count( $instance['limit'] ) ) ) { $args['limit'] = intval( $instance['limit'] ); }
 		if ( isset( $instance['specific_id'] ) && ( 0 < count( $instance['specific_id'] ) ) ) { $args['id'] = intval( $instance['specific_id'] ); }
 		if ( isset( $instance['size'] ) && ( 0 < count( $instance['size'] ) ) ) { $args['size'] = intval( $instance['size'] ); }
+		if ( isset( $instance['per_row'] ) && ( 0 < count( $instance['per_row'] ) ) ) { $args['per_row'] = intval( $instance['per_row'] ); }
 
 		// Select boxes.
 		if ( isset( $instance['orderby'] ) && in_array( $instance['orderby'], array_keys( $this->get_orderby_options() ) ) ) { $args['orderby'] = $instance['orderby']; }
@@ -94,7 +95,7 @@ class WooThemes_Widget_Features extends WP_Widget {
 		do_action( $this->woothemes_widget_cssclass . '_bottom' );
 
 		/* After widget (defined by themes). */
-		echo $after_widget;
+		// echo $after_widget;
 	} // End widget()
 
 	/**
@@ -114,6 +115,7 @@ class WooThemes_Widget_Features extends WP_Widget {
 		$instance['limit'] = intval( $new_instance['limit'] );
 		$instance['specific_id'] = intval( $new_instance['specific_id'] );
 		$instance['size'] = intval( $new_instance['size'] );
+		$instance['per_row'] = intval( $new_instance['per_row'] );
 
 		/* The select box is returning a text value, so we escape it. */
 		$instance['orderby'] = esc_attr( $new_instance['orderby'] );
@@ -139,7 +141,8 @@ class WooThemes_Widget_Features extends WP_Widget {
 			'orderby' => 'menu_order', 
 			'order' => 'DESC', 
 			'specific_id' => '', 
-			'size' => 50
+			'size' => 50, 
+			'per_row' => 3
 		);
 		
 		$instance = wp_parse_args( (array) $instance, $defaults );
@@ -158,6 +161,11 @@ class WooThemes_Widget_Features extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'size' ); ?>"><?php _e( 'Image Size (in pixels):', 'woothemes-features' ); ?></label>
 			<input type="text" name="<?php echo $this->get_field_name( 'size' ); ?>"  value="<?php echo $instance['size']; ?>" class="widefat" id="<?php echo $this->get_field_id( 'size' ); ?>" />
+		</p>
+		<!-- Widget Per Row: Text Input -->
+		<p>
+			<label for="<?php echo $this->get_field_id( 'per_row' ); ?>"><?php _e( 'Items Per Row:', 'woothemes-features' ); ?></label>
+			<input type="text" name="<?php echo $this->get_field_name( 'per_row' ); ?>"  value="<?php echo $instance['per_row']; ?>" class="widefat" id="<?php echo $this->get_field_id( 'per_row' ); ?>" />
 		</p>
 		<!-- Widget Order By: Select Input -->
 		<p>
