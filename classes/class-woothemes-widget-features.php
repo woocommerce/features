@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) || ! function_exists( 'woothemes_features' ) ) exit;
  * - form()
  * - get_orderby_options()
  */
-class WooThemes_Widget_Features extends WP_Widget {
+class Woothemes_Widget_Features extends WP_Widget {
 	protected $woothemes_widget_cssclass;
 	protected $woothemes_widget_description;
 	protected $woothemes_widget_idbase;

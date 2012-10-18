@@ -17,5 +17,5 @@ require_once( 'classes/class-woothemes-features.php' );
 require_once( 'woothemes-features-template.php' );
 require_once( 'classes/class-woothemes-widget-features.php' );
 global $woothemes_features;
-$woothemes_features = new WooThemes_Features( __FILE__ );
+$woothemes_features = new Woothemes_Features( __FILE__ );
 ?>
