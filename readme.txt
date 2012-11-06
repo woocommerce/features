@@ -66,5 +66,8 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 
 == Changelog ==
 
+= 1.0.1 =
+* Tweak - first / last classes applied regardless
+
 = 1.0.0 =
 * Initial release. Woo!
