@@ -76,9 +76,9 @@ function woothemes_features ( $args = '' ) {
 				
 				$class = 'feature';
 
-				if ( count( $query ) == $i || ( 0 == $i % $args['per_row'] ) ) {
+				if( ( 0 == $i % $args['per_row'] ) ) {
 					$class .= ' last';
-				} elseif ( 0 == ( $i - 1 ) % $args['per_row'] && count( $query ) != $i ) {
+				} elseif ( 0 == ( $i - 1 ) % ( $args['per_row'] ) ) {
 					$class .= ' first';
 				}
 
