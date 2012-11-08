@@ -14,7 +14,7 @@ Show off what features your company, product or service offers, using our shortc
 
 "Features by WooThemes" is a clean and easy-to-use features showcase management system for WordPress. Load in the features your product, company or services offers, and display them via a shortcode, widget or template tag on your website.
 
-=== Usage ===
+== Usage ==
 
 To display your features via a theme or a custom plugin, please use the following code:
 
