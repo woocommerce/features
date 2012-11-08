@@ -4,7 +4,7 @@ Donate link: http://woothemes.com/
 Tags: features, widget, shortcode, template-tag, services
 Requires at least: 3.4.2
 Tested up to: 3.5-beta2
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,13 +61,25 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 
 == Upgrade Notice ==
 
+= 1.1.0 =
+* Adds "URL" custom field.
+* Adds "link_title" option to the shortcode.
+* Routine plugin maintenance.
+
 = 1.0.0 =
 * Initial release. Woo!
 
 == Changelog ==
 
+= 1.1.0 =
+* 2012-11-08
+* Adds "link_title" option to the shortcode.
+* Adds "URL" custom field, to use in place of linking to the permalink, if it is specified.
+
 = 1.0.1 =
+* 2012-11-06
 * Tweak - first / last classes applied regardless
 
 = 1.0.0 =
+* 2012-10-23
 * Initial release. Woo!

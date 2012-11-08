@@ -45,6 +45,8 @@ class Woothemes_Features {
 		if ( is_admin() ) {
 			global $pagenow;
 
+			add_action( 'admin_menu', array( &$this, 'meta_box_setup' ), 20 );
+			add_action( 'save_post', array( &$this, 'meta_box_save' ) );
 			add_filter( 'enter_title_here', array( &$this, 'enter_title_here' ) );
 			add_action( 'admin_print_styles', array( &$this, 'enqueue_admin_styles' ), 10 );
 			add_filter( 'post_updated_messages', array( &$this, 'updated_messages' ) );
@@ -196,6 +198,103 @@ class Woothemes_Features {
 	} // End updated_messages()
 
 	/**
+	 * Setup the meta box.
+	 * 
+	 * @access public
+	 * @since  1.1.0
+	 * @return void
+	 */
+	public function meta_box_setup () {		
+		add_meta_box( 'feature-data', __( 'Feature Details', 'woothemes-features' ), array( &$this, 'meta_box_content' ), $this->token, 'normal', 'high' );
+	} // End meta_box_setup()
+	
+	/**
+	 * The contents of our meta box.
+	 * 
+	 * @access public
+	 * @since  1.1.0
+	 * @return void
+	 */
+	public function meta_box_content () {
+		global $post_id;
+		$fields = get_post_custom( $post_id );
+		$field_data = $this->get_custom_fields_settings();
+
+		$html = '';
+		
+		$html .= '<input type="hidden" name="woo_' . $this->token . '_noonce" id="woo_' . $this->token . '_noonce" value="' . wp_create_nonce( plugin_basename( $this->dir ) ) . '" />';
+		
+		if ( 0 < count( $field_data ) ) {
+			$html .= '<table class="form-table">' . "\n";
+			$html .= '<tbody>' . "\n";
+
+			foreach ( $field_data as $k => $v ) {
+				$data = $v['default'];
+				if ( isset( $fields['_' . $k] ) && isset( $fields['_' . $k][0] ) ) {
+					$data = $fields['_' . $k][0];
+				}
+
+				$html .= '<tr valign="top"><th scope="row"><label for="' . esc_attr( $k ) . '">' . $v['name'] . '</label></th><td><input name="' . esc_attr( $k ) . '" type="text" id="' . esc_attr( $k ) . '" class="regular-text" value="' . esc_attr( $data ) . '" />' . "\n";
+				$html .= '<p class="description">' . $v['description'] . '</p>' . "\n";
+				$html .= '</td><tr/>' . "\n";
+			}
+
+			$html .= '</tbody>' . "\n";
+			$html .= '</table>' . "\n";
+		}
+		
+		echo $html;	
+	} // End meta_box_content()
+	
+	/**
+	 * Save meta box fields.
+	 * 
+	 * @access public
+	 * @since  1.1.0
+	 * @param int $post_id
+	 * @return void
+	 */
+	public function meta_box_save ( $post_id ) {
+		global $post, $messages;
+
+		// Verify
+		if ( ( get_post_type() != $this->token ) || ! wp_verify_nonce( $_POST['woo_' . $this->token . '_noonce'], plugin_basename( $this->dir ) ) ) {  
+			return $post_id;  
+		}
+		  
+		if ( 'page' == $_POST['post_type'] ) {  
+			if ( ! current_user_can( 'edit_page', $post_id ) ) { 
+				return $post_id;
+			}
+		} else {  
+			if ( ! current_user_can( 'edit_post', $post_id ) ) { 
+				return $post_id;
+			}
+		}
+		
+		$field_data = $this->get_custom_fields_settings();
+		$fields = array_keys( $field_data );
+		
+		foreach ( $fields as $f ) {
+		
+			${$f} = strip_tags(trim($_POST[$f]));
+
+			// Escape the URLs.
+			if ( 'url' == $field_data[$f]['type'] ) {
+				${$f} = esc_url( ${$f} );
+			}
+			
+			if ( get_post_meta( $post_id, '_' . $f ) == '' ) { 
+				add_post_meta( $post_id, '_' . $f, ${$f}, true ); 
+			} elseif( ${$f} != get_post_meta( $post_id, '_' . $f, true ) ) { 
+				update_post_meta( $post_id, '_' . $f, ${$f} );
+			} elseif ( ${$f} == '' ) { 
+				delete_post_meta( $post_id, '_' . $f, get_post_meta( $post_id, '_' . $f, true ) );
+			}	
+		}
+	} // End meta_box_save()
+
+	/**
 	 * Customise the "Enter title here" text.
 	 * 
 	 * @access public
@@ -221,6 +320,25 @@ class Woothemes_Features {
 		wp_register_style( 'woothemes-features-admin', $this->assets_url . '/css/admin.css', array(), '1.0.2' );
 		wp_enqueue_style( 'woothemes-features-admin' );
 	} // End enqueue_admin_styles()
+
+	/**
+	 * Get the settings for the custom fields.
+	 * @since  1.1.0
+	 * @return array
+	 */
+	public function get_custom_fields_settings () {
+		$fields = array();
+
+		$fields['url'] = array(
+		    'name' => __( 'URL', 'woothemes-features' ), 
+		    'description' => __( 'Enter a URL that applies to this feature (for example: http://woothemes.com/).', 'woothemes-features' ), 
+		    'type' => 'url', 
+		    'default' => '', 
+		    'section' => 'info'
+		);
+
+		return $fields;
+	} // End get_custom_fields_settings()
 
 	/**
 	 * Get the image for the given ID.
@@ -309,6 +427,13 @@ class Woothemes_Features {
 
 				// Get the image.
 				$query[$k]->image = $this->get_image( $v->ID, $args['size'] );
+
+				// Get the URL.
+				if ( isset( $meta['_url'][0] ) && '' != $meta['_url'][0] ) {
+					$query[$k]->url = esc_url( $meta['_url'][0] );
+				} else {
+					$query[$k]->url = get_permalink( $v->ID );
+				}
 			}
 		} else {
 			$query = false;

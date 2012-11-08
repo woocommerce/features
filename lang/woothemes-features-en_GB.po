@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Features v1.0.0\n"
+"Project-Id-Version: Features v1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2012-10-17 12:43:43+0000\n"
+"PO-Revision-Date: 2012-11-08 08:28:45+0000\n"
 "Last-Translator: Matt <matt@woothemes.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,162 +19,162 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: classes/class-woothemes-features.php:74
+#: classes/class-woothemes-features.php:76
 #@ woothemes-features
 msgctxt "post type general name"
 msgid "Features"
 msgstr ""
 
-#: classes/class-woothemes-features.php:75
+#: classes/class-woothemes-features.php:77
 #@ woothemes-features
 msgctxt "post type singular name"
 msgid "Feature"
 msgstr ""
 
-#: classes/class-woothemes-features.php:76
+#: classes/class-woothemes-features.php:78
 #@ woothemes-features
 msgctxt "feature"
 msgid "Add New"
 msgstr ""
 
-#: classes/class-woothemes-features.php:77
+#: classes/class-woothemes-features.php:79
 #, php-format
 #@ woothemes-features
 msgid "Add New %s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:77
-#: classes/class-woothemes-features.php:78
 #: classes/class-woothemes-features.php:79
+#: classes/class-woothemes-features.php:80
+#: classes/class-woothemes-features.php:81
 #@ woothemes-features
 msgid "Feature"
 msgstr ""
 
-#: classes/class-woothemes-features.php:78
+#: classes/class-woothemes-features.php:80
 #, php-format
 #@ woothemes-features
 msgid "Edit %s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:79
+#: classes/class-woothemes-features.php:81
 #, php-format
 #@ woothemes-features
 msgid "New %s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:80
+#: classes/class-woothemes-features.php:82
 #, php-format
 #@ woothemes-features
 msgid "All %s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:80
 #: classes/class-woothemes-features.php:82
-#: classes/class-woothemes-features.php:83
 #: classes/class-woothemes-features.php:84
+#: classes/class-woothemes-features.php:85
 #: classes/class-woothemes-features.php:86
+#: classes/class-woothemes-features.php:88
 #: classes/class-woothemes-widget-features.php:44
 #@ woothemes-features
 msgid "Features"
 msgstr ""
 
-#: classes/class-woothemes-features.php:81
+#: classes/class-woothemes-features.php:83
 #, php-format
 #@ woothemes-features
 msgid "View %s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:81
+#: classes/class-woothemes-features.php:83
 #@ woothemes-features
 msgid "Testimonial"
-msgstr ""
-
-#: classes/class-woothemes-features.php:82
-#, php-format
-#@ woothemes-features
-msgid "Search %a"
-msgstr ""
-
-#: classes/class-woothemes-features.php:83
-#, php-format
-#@ woothemes-features
-msgid "No %s Found"
 msgstr ""
 
 #: classes/class-woothemes-features.php:84
 #, php-format
 #@ woothemes-features
+msgid "Search %a"
+msgstr ""
+
+#: classes/class-woothemes-features.php:85
+#, php-format
+#@ woothemes-features
+msgid "No %s Found"
+msgstr ""
+
+#: classes/class-woothemes-features.php:86
+#, php-format
+#@ woothemes-features
 msgid "No %s Found In Trash"
 msgstr ""
 
-#: classes/class-woothemes-features.php:146
+#: classes/class-woothemes-features.php:148
 #@ woothemes-features
 msgid "Image"
 msgstr ""
 
-#: classes/class-woothemes-features.php:180
+#: classes/class-woothemes-features.php:182
 #, php-format
 #@ woothemes-features
 msgid "Feature updated. %sView feature%s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:181
+#: classes/class-woothemes-features.php:183
 #@ woothemes-features
 msgid "Custom field updated."
 msgstr ""
 
-#: classes/class-woothemes-features.php:182
+#: classes/class-woothemes-features.php:184
 #@ woothemes-features
 msgid "Custom field deleted."
 msgstr ""
 
-#: classes/class-woothemes-features.php:183
+#: classes/class-woothemes-features.php:185
 #@ woothemes-features
 msgid "Feature updated."
 msgstr ""
 
 #. translators: %s: date and time of the revision 
-#: classes/class-woothemes-features.php:185
+#: classes/class-woothemes-features.php:187
 #, php-format
 #@ woothemes-features
 msgid "Feature restored to revision from %s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:186
+#: classes/class-woothemes-features.php:188
 #, php-format
 #@ woothemes-features
 msgid "Feature published. %sView feature%s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:187
+#: classes/class-woothemes-features.php:189
 #@ default
 msgid "Feature saved."
 msgstr ""
 
-#: classes/class-woothemes-features.php:188
+#: classes/class-woothemes-features.php:190
 #, php-format
 #@ woothemes-features
 msgid "Feature submitted. %sPreview feature%s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:189
+#: classes/class-woothemes-features.php:191
 #, php-format
 #@ woothemes-features
 msgid "Feature scheduled for: %1$s. %2$sPreview feature%3$s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:191
+#: classes/class-woothemes-features.php:193
 #@ default
 msgid "M j, Y @ G:i"
 msgstr ""
 
-#: classes/class-woothemes-features.php:192
+#: classes/class-woothemes-features.php:194
 #, php-format
 #@ woothemes-features
 msgid "Feature draft updated. %sPreview feature%s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:208
+#: classes/class-woothemes-features.php:307
 #@ woothemes-features
 msgid "Enter the feature title here"
 msgstr ""
@@ -184,73 +184,93 @@ msgstr ""
 msgid "Recent features listed on your site."
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:149
+#: classes/class-woothemes-widget-features.php:152
 #@ woothemes-features
 msgid "Title (optional):"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:154
+#: classes/class-woothemes-widget-features.php:157
 #@ woothemes-features
 msgid "Limit:"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:159
+#: classes/class-woothemes-widget-features.php:162
 #@ woothemes-features
 msgid "Image Size (in pixels):"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:164
+#: classes/class-woothemes-widget-features.php:172
 #@ woothemes-features
 msgid "Order By:"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:173
+#: classes/class-woothemes-widget-features.php:181
 #@ woothemes-features
 msgid "Order Direction:"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:182
+#: classes/class-woothemes-widget-features.php:190
 #@ woothemes-features
 msgid "Specific ID (optional):"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:185
+#: classes/class-woothemes-widget-features.php:193
 #@ woothemes-features
 msgid "Display a specific testimonial, rather than a list."
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:196
+#: classes/class-woothemes-widget-features.php:204
 #@ woothemes-features
 msgid "No Order"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:197
+#: classes/class-woothemes-widget-features.php:205
 #@ woothemes-features
 msgid "Entry ID"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:198
+#: classes/class-woothemes-widget-features.php:206
 #@ woothemes-features
 msgid "Title"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:199
+#: classes/class-woothemes-widget-features.php:207
 #@ woothemes-features
 msgid "Date Added"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:200
+#: classes/class-woothemes-widget-features.php:208
 #@ woothemes-features
 msgid "Specified Order Setting"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:211
+#: classes/class-woothemes-widget-features.php:219
 #@ woothemes-features
 msgid "Ascending"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:212
+#: classes/class-woothemes-widget-features.php:220
 #@ woothemes-features
 msgid "Descending"
+msgstr ""
+
+#: classes/class-woothemes-features.php:208
+#@ woothemes-features
+msgid "Feature Details"
+msgstr ""
+
+#: classes/class-woothemes-features.php:333
+#@ woothemes-features
+msgid "URL"
+msgstr ""
+
+#: classes/class-woothemes-features.php:334
+#@ woothemes-features
+msgid "Enter a URL that applies to this feature (for example: http://woothemes.com/)."
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:167
+#@ woothemes-features
+msgid "Items Per Row:"
 msgstr ""
 
