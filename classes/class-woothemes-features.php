@@ -66,8 +66,8 @@ class Woothemes_Features {
 	 * 
 	 * @access public
 	 * @param string $token
-	 * @param string 'Testimonial'
-	 * @param string 'Testimonials'
+	 * @param string 'Features'
+	 * @param string 'Features'
 	 * @param array $supports
 	 * @return void
 	 */
@@ -80,7 +80,7 @@ class Woothemes_Features {
 			'edit_item' => sprintf( __( 'Edit %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
 			'new_item' => sprintf( __( 'New %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
 			'all_items' => sprintf( __( 'All %s', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
-			'view_item' => sprintf( __( 'View %s', 'woothemes-features' ), __( 'Testimonial', 'woothemes-features' ) ),
+			'view_item' => sprintf( __( 'View %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
 			'search_items' => sprintf( __( 'Search %a', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
 			'not_found' =>  sprintf( __( 'No %s Found', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
 			'not_found_in_trash' => sprintf( __( 'No %s Found In Trash', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
