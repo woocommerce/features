@@ -317,7 +317,7 @@ class Woothemes_Features {
 	 * @return   void
 	 */
 	public function enqueue_admin_styles () {
-		wp_register_style( 'woothemes-features-admin', $this->assets_url . '/css/admin.css', array(), '1.0.2' );
+		wp_register_style( 'woothemes-features-admin', plugins_url( 'assets/css/admin.css' , dirname(__FILE__) ), array(), '1.0.2' );
 		wp_enqueue_style( 'woothemes-features-admin' );
 	} // End enqueue_admin_styles()
 
