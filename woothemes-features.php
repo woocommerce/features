@@ -4,7 +4,7 @@
  * Plugin URI: http://woothemes.com/
  * Description: Hi, I'm your feature showcase plugin for WordPress. Show off what features your company, product or service offers, using our shortcode, widget or template tag.
  * Author: WooThemes
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author URI: http://woothemes.com/
  *
  * @package WordPress

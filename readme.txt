@@ -3,8 +3,8 @@ Contributors: woothemes, mattyza, jameskoster
 Donate link: http://woothemes.com/
 Tags: features, widget, shortcode, template-tag, services
 Requires at least: 3.4.2
-Tested up to: 3.5-beta2
-Stable tag: 1.1.0
+Tested up to: 3.5-beta3
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,10 +31,45 @@ To add arguments to this, please use any of the following arguments, using the s
 * 'per_row' => 3 (when creating rows, how many items display in a single row?)
 * 'link_title' => true (link the feature's title to it's permalink)
 * 'title' => '' (an optional title)
+* 'before' => '<div class="widget widget_woothemes_features">' (the starting HTML, wrapping the features)
+* 'after' => '</div><!--/.widget widget_woothemes_features-->' (the ending HTML, wrapping the features)
+* 'before_title' => '<h2>' (the starting HTML, wrapping the title)
+* 'after_title' => '</h2>' (the ending HTML, wrapping the title)
+
+The various options for the "orderby" parameter are:
+
+* 'none'
+* 'ID'
+* 'author'
+* 'title'
+* 'date'
+* 'modified'
+* 'parent'
+* 'rand'
+* 'comment_count'
+* 'menu_order'
+* 'meta_value'
+* 'meta_value_num'
 
 `<?php do_action( 'woothemes_features', array( 'limit' => 10, 'link_title' => false ) ); ?>`
 
 The same arguments apply to the shortcode which is `[woothemes_features]` and the template tag, which is `<?php woothemes_features(); ?>`.
+
+== Usage Examples ==
+
+Adjusting the limit and image dimension, using the arguments in the three possible methods:
+
+do_action() call:
+
+`<?php do_action( 'woothemes_features', array( 'limit' => 10, 'size' => 100 ) ); ?>`
+
+woothemes_features() template tag:
+
+`<?php woothemes_features( array( 'limit' => 10, 'size' => 100 ) ); ?>`
+
+[woothemes_features] shortcode:
+
+`[woothemes_features limit="10" size="100"]`
 
 == Installation ==
 
@@ -61,6 +96,11 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 
 == Upgrade Notice ==
 
+= 1.2.0 =
+* Adds basic WPML support.
+* Enhancements to the widget output.
+* Adds new arguments for controlling the HTML wrapping the features, as well as wrapping the title.
+
 = 1.1.0 =
 * Adds "URL" custom field.
 * Adds "link_title" option to the shortcode.
@@ -70,6 +110,14 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * Initial release. Woo!
 
 == Changelog ==
+
+= 1.2.0 =
+* 2012-11-27
+* Adds basic WPML support to the get_features() method.
+* Moves the "title" outside of the ".features" DIV tag.
+* Adds "before" and "after" arguments for filtering the HTML for the container. Integrate the $before_widget and $after widget variables to use these parameters with the widget.
+* If the "link title" option is enabled, link the image as well.
+* Adds "before_title" and "after_title" arguments, for filtering the title's wrapping HTML. Integrate the $before_title and $after_title widget variables to use these parameters with the widget.
 
 = 1.1.0 =
 * 2012-11-08

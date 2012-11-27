@@ -40,7 +40,11 @@ function woothemes_features ( $args = '' ) {
 		'size' => 50, 
 		'per_row' => 3, 
 		'link_title' => true, 
-		'title' => ''
+		'title' => '', 
+		'before' => '<div class="widget widget_woothemes_features">', 
+		'after' => '</div><!--/.widget widget_woothemes_features-->', 
+		'before_title' => '<h2>', 
+		'after_title' => '</h2>'
 	);
 	
 	$args = wp_parse_args( $args, $defaults );
@@ -56,12 +60,13 @@ function woothemes_features ( $args = '' ) {
 
 		// The Display.
 		if ( ! is_wp_error( $query ) && is_array( $query ) && count( $query ) > 0 ) {
-			$html .= '<div class="widget widget_woothemes_features">' . "\n";
-			$html .= '<div class="features">' . "\n";
-
+			$html .= $args['before'] . "\n";
+			
 			if ( '' != $args['title'] ) {
-				$html .= '<h2>' . esc_html( $args['title'] ) . '</h2>' . "\n";
+				$html .= $args['before_title'] . esc_html( $args['title'] ) . $args['after_title'] . "\n";
 			}
+
+			$html .= '<div class="features">' . "\n";
 			
 			// Begin templating logic.
 			$tpl = '<div class="%%CLASS%%">%%IMAGE%%<h3 class="feature-title">%%TITLE%%</h3><div class="feature-content">%%CONTENT%%</div></div>';
@@ -85,6 +90,7 @@ function woothemes_features ( $args = '' ) {
 
 				$title = get_the_title();
 				if ( true == $args['link_title'] ) {
+					$post->image = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $post->image . '</a>';
 					$title = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $title . '</a>';
 				}
 
@@ -107,7 +113,7 @@ function woothemes_features ( $args = '' ) {
 			}
 
 			$html .= '</div><!--/.features-->' . "\n";
-			$html .= '</div><!--/.widget widget_woothemes_features-->' . "\n";
+			$html .= $args['after'] . "\n";
 
 			wp_reset_postdata();
 		}

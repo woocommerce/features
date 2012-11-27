@@ -67,12 +67,16 @@ class Woothemes_Widget_Features extends WP_Widget {
 		$title = apply_filters('widget_title', $instance['title'], $instance, $this->id_base );
 			
 		/* Before widget (defined by themes). */
-		// echo $before_widget;
-
 		$args = array();
 
+		$args['before'] = $before_widget;
+
 		/* Display the widget title if one was input (before and after defined by themes). */
-		if ( $title ) { $args['title'] = $title; }
+		if ( $title ) {
+			$args['title'] = $title;
+			$args['before_title'] = $before_title;
+			$args['after_title'] = $after_title;
+		}
 		
 		/* Widget content. */
 		// Add actions for plugins/themes to hook onto.
@@ -95,7 +99,7 @@ class Woothemes_Widget_Features extends WP_Widget {
 		do_action( $this->woothemes_widget_cssclass . '_bottom' );
 
 		/* After widget (defined by themes). */
-		// echo $after_widget;
+		$args['after'] = $after_widget;
 	} // End widget()
 
 	/**
@@ -190,7 +194,7 @@ class Woothemes_Widget_Features extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'specific_id' ); ?>"><?php _e( 'Specific ID (optional):', 'woothemes-features' ); ?></label>
 			<input type="text" name="<?php echo $this->get_field_name( 'specific_id' ); ?>"  value="<?php echo $instance['specific_id']; ?>" class="widefat" id="<?php echo $this->get_field_id( 'specific_id' ); ?>" />
 		</p>
-		<p><small><?php _e( 'Display a specific testimonial, rather than a list.', 'woothemes-features' ); ?></small></p>
+		<p><small><?php _e( 'Display a specific feature, rather than a list.', 'woothemes-features' ); ?></small></p>
 <?php
 	} // End form()
 
