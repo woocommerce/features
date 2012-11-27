@@ -103,7 +103,12 @@ function woothemes_features ( $args = '' ) {
 
 				$template = str_replace( '%%CLASS%%', $class, $template );
 				$template = str_replace( '%%TITLE%%', $title, $template );
-				$template = str_replace( '%%CONTENT%%', get_the_content(), $template );
+
+				if ( '' != get_the_excerpt() ) {
+					$template = str_replace( '%%CONTENT%%', get_the_excerpt(), $template );
+				} else {
+					$template = str_replace( '%%CONTENT%%', get_the_content(), $template );
+				}
 
 				$html .= $template;
 

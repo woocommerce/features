@@ -100,6 +100,7 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * Adds basic WPML support.
 * Enhancements to the widget output.
 * Adds new arguments for controlling the HTML wrapping the features, as well as wrapping the title.
+* Adss support for the excerpt.
 
 = 1.1.0 =
 * Adds "URL" custom field.
@@ -118,6 +119,7 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * Adds "before" and "after" arguments for filtering the HTML for the container. Integrate the $before_widget and $after widget variables to use these parameters with the widget.
 * If the "link title" option is enabled, link the image as well.
 * Adds "before_title" and "after_title" arguments, for filtering the title's wrapping HTML. Integrate the $before_title and $after_title widget variables to use these parameters with the widget.
+* Adds support for the excerpt.
 
 = 1.1.0 =
 * 2012-11-08
