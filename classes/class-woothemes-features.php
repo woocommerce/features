@@ -97,7 +97,7 @@ class Woothemes_Features {
 			'query_var' => true,
 			'rewrite' => array( 'slug' => 'feature' ),
 			'capability_type' => 'post',
-			'has_archive' => array( 'slug' => 'features' ),
+			'has_archive' => true,
 			'hierarchical' => false,
 			'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes' ), 
 			'menu_position' => 5, 
