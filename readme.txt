@@ -14,6 +14,11 @@ Show off what features your company, product or service offers, using our shortc
 
 "Features by WooThemes" is a clean and easy-to-use features showcase management system for WordPress. Load in the features your product, company or services offers, and display them via a shortcode, widget or template tag on your website.
 
+Looking for a helping hand? [View plugin documentation](http://wordpress.org/extend/plugins/features-by-woothemes/other_notes/).
+
+Looking to contribute code to this plugin? [Fork the repository over at GitHub](http://github.com/woothemes/features/).
+(submit pull requests to the "develop" branch)
+
 == Usage ==
 
 To display your features via a theme or a custom plugin, please use the following code:
@@ -31,10 +36,10 @@ To add arguments to this, please use any of the following arguments, using the s
 * 'per_row' => 3 (when creating rows, how many items display in a single row?)
 * 'link_title' => true (link the feature's title to it's permalink)
 * 'title' => '' (an optional title)
-* 'before' => '<div class="widget widget_woothemes_features">' (the starting HTML, wrapping the features)
-* 'after' => '</div><!--/.widget widget_woothemes_features-->' (the ending HTML, wrapping the features)
-* 'before_title' => '<h2>' (the starting HTML, wrapping the title)
-* 'after_title' => '</h2>' (the ending HTML, wrapping the title)
+* 'before' => '&lt;div class="widget widget_woothemes_features"&gt;' (the starting HTML, wrapping the features)
+* 'after' => '&lt;/div&gt;' (the ending HTML, wrapping the features)
+* 'before_title' => '&lt;h2&gt;' (the starting HTML, wrapping the title)
+* 'after_title' => '&lt;/h2&gt;' (the ending HTML, wrapping the title)
 
 The various options for the "orderby" parameter are:
 
@@ -100,7 +105,7 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * Adds basic WPML support.
 * Enhancements to the widget output.
 * Adds new arguments for controlling the HTML wrapping the features, as well as wrapping the title.
-* Adss support for the excerpt.
+* Ads support for the excerpt.
 
 = 1.1.0 =
 * Adds "URL" custom field.

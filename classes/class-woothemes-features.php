@@ -31,7 +31,7 @@ class Woothemes_Features {
 		$this->dir = dirname( $file );
 		$this->file = $file;
 		$this->assets_dir = trailingslashit( $this->dir ) . 'assets';
-		$this->assets_url = esc_url( str_replace( WP_PLUGIN_DIR, WP_PLUGIN_URL, $this->assets_dir ) );
+		$this->assets_url = esc_url( trailingslashit( plugins_url( '/assets/', $file ) ) );
 		$this->token = 'feature';
 
 		$this->load_plugin_textdomain();
@@ -317,7 +317,7 @@ class Woothemes_Features {
 	 * @return   void
 	 */
 	public function enqueue_admin_styles () {
-		wp_register_style( 'woothemes-features-admin', $this->assets_url . '/css/admin.css', array(), '1.0.2' );
+		wp_register_style( 'woothemes-features-admin', esc_url( $this->assets_url . 'css/admin.css' ), array(), '1.0.2' );
 		wp_enqueue_style( 'woothemes-features-admin' );
 	} // End enqueue_admin_styles()
 
