@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Features v1.1.0\n"
+"Project-Id-Version: Features v1.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2012-11-08 08:28:45+0000\n"
+"PO-Revision-Date: 2012-11-27 08:54:04+0000\n"
 "Last-Translator: Matt <matt@woothemes.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -46,6 +46,7 @@ msgstr ""
 #: classes/class-woothemes-features.php:79
 #: classes/class-woothemes-features.php:80
 #: classes/class-woothemes-features.php:81
+#: classes/class-woothemes-features.php:83
 #@ woothemes-features
 msgid "Feature"
 msgstr ""
@@ -82,11 +83,6 @@ msgstr ""
 #, php-format
 #@ woothemes-features
 msgid "View %s"
-msgstr ""
-
-#: classes/class-woothemes-features.php:83
-#@ woothemes-features
-msgid "Testimonial"
 msgstr ""
 
 #: classes/class-woothemes-features.php:84
@@ -184,72 +180,67 @@ msgstr ""
 msgid "Recent features listed on your site."
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:152
+#: classes/class-woothemes-widget-features.php:156
 #@ woothemes-features
 msgid "Title (optional):"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:157
+#: classes/class-woothemes-widget-features.php:161
 #@ woothemes-features
 msgid "Limit:"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:162
+#: classes/class-woothemes-widget-features.php:166
 #@ woothemes-features
 msgid "Image Size (in pixels):"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:172
+#: classes/class-woothemes-widget-features.php:176
 #@ woothemes-features
 msgid "Order By:"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:181
+#: classes/class-woothemes-widget-features.php:185
 #@ woothemes-features
 msgid "Order Direction:"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:190
+#: classes/class-woothemes-widget-features.php:194
 #@ woothemes-features
 msgid "Specific ID (optional):"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:193
-#@ woothemes-features
-msgid "Display a specific testimonial, rather than a list."
-msgstr ""
-
-#: classes/class-woothemes-widget-features.php:204
+#: classes/class-woothemes-widget-features.php:208
 #@ woothemes-features
 msgid "No Order"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:205
+#: classes/class-woothemes-widget-features.php:209
 #@ woothemes-features
 msgid "Entry ID"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:206
+#: classes/class-woothemes-widget-features.php:210
 #@ woothemes-features
 msgid "Title"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:207
+#: classes/class-woothemes-widget-features.php:211
 #@ woothemes-features
 msgid "Date Added"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:208
+#: classes/class-woothemes-widget-features.php:212
 #@ woothemes-features
 msgid "Specified Order Setting"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:219
+#: classes/class-woothemes-widget-features.php:223
 #@ woothemes-features
 msgid "Ascending"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:220
+#: classes/class-woothemes-widget-features.php:224
 #@ woothemes-features
 msgid "Descending"
 msgstr ""
@@ -269,8 +260,13 @@ msgstr ""
 msgid "Enter a URL that applies to this feature (for example: http://woothemes.com/)."
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:167
+#: classes/class-woothemes-widget-features.php:171
 #@ woothemes-features
 msgid "Items Per Row:"
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:197
+#@ woothemes-features
+msgid "Display a specific feature, rather than a list."
 msgstr ""
 
