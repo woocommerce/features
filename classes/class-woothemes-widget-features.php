@@ -71,6 +71,9 @@ class Woothemes_Widget_Features extends WP_Widget {
 
 		$args['before'] = $before_widget;
 
+		/* After widget (defined by themes). */
+		$args['after'] = $after_widget;
+
 		/* Display the widget title if one was input (before and after defined by themes). */
 		if ( $title ) {
 			$args['title'] = $title;
@@ -97,9 +100,6 @@ class Woothemes_Widget_Features extends WP_Widget {
 
 		// Add actions for plugins/themes to hook onto.
 		do_action( $this->woothemes_widget_cssclass . '_bottom' );
-
-		/* After widget (defined by themes). */
-		$args['after'] = $after_widget;
 	} // End widget()
 
 	/**

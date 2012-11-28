@@ -4,7 +4,7 @@ Donate link: http://woothemes.com/
 Tags: features, widget, shortcode, template-tag, services
 Requires at least: 3.4.2
 Tested up to: 3.5-beta3
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,6 +101,9 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 
 == Upgrade Notice ==
 
+= 1.2.1 =
+* Minor bugfix to the output of the "Features" widget.
+
 = 1.2.0 =
 * Adds basic WPML support.
 * Enhancements to the widget output.
@@ -116,6 +119,10 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * Initial release. Woo!
 
 == Changelog ==
+
+= 1.2.1 =
+* 2012-11-28
+* Makes sure the ending wrapping markup for the widget is declared in the appropriate location, before calling the woothemes_features() function.
 
 = 1.2.0 =
 * 2012-11-27
