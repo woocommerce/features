@@ -121,7 +121,7 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 == Changelog ==
 
 = 1.2.1 =
-* 2012-11-28
+* 2012-11-29
 * Makes sure the ending wrapping markup for the widget is declared in the appropriate location, before calling the woothemes_features() function.
 
 = 1.2.0 =
