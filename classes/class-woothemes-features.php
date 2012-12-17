@@ -337,7 +337,7 @@ class Woothemes_Features {
 		    'section' => 'info'
 		);
 
-		return $fields;
+		return apply_filters( 'woothemes_features_custom_fields_settings', $fields );
 	} // End get_custom_fields_settings()
 
 	/**
