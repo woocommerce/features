@@ -110,6 +110,8 @@ function woothemes_features ( $args = '' ) {
 					$template = str_replace( '%%CONTENT%%', get_the_content(), $template );
 				}
 
+				$template = apply_filters( 'woothemes_features_template', $template, $post );
+
 				$html .= $template;
 
 				if( ( 0 == $i % $args['per_row'] ) ) {
