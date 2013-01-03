@@ -129,6 +129,7 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * Enhance the "woothemes_features_html" filter.
 * Make sure to use the_content() if there is no custom excerpt.
 * Add support for ordering by "rand" to the widget.
+* Allow the "size" parameter to receive an array of dimensions.
 
 = 1.2.1 =
 * 2012-11-29
