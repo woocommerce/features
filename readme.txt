@@ -3,8 +3,8 @@ Contributors: woothemes, mattyza, jameskoster
 Donate link: http://woothemes.com/
 Tags: features, widget, shortcode, template-tag, services
 Requires at least: 3.4.2
-Tested up to: 3.5-beta3
-Stable tag: 1.2.1
+Tested up to: 3.5
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,6 +101,9 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 
 == Upgrade Notice ==
 
+= 1.2.2 =
+* Minor bugfixes to the "order" directions options and additions to the "woothemes_features_html" filter.
+
 = 1.2.1 =
 * Minor bugfix to the output of the "Features" widget.
 
@@ -119,6 +122,13 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * Initial release. Woo!
 
 == Changelog ==
+
+= 1.2.2 =
+* 2013-01-03
+* Fix the "order" direction options to be in capitals.
+* Enhance the "woothemes_features_html" filter.
+* Make sure to use the_content() if there is no custom excerpt.
+* Add support for ordering by "rand" to the widget.
 
 = 1.2.1 =
 * 2012-11-29

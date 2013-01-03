@@ -104,7 +104,7 @@ function woothemes_features ( $args = '' ) {
 				$template = str_replace( '%%CLASS%%', $class, $template );
 				$template = str_replace( '%%TITLE%%', $title, $template );
 
-				if ( '' != get_the_excerpt() ) {
+				if ( '' != $post->post_excerpt ) {
 					$template = str_replace( '%%CONTENT%%', get_the_excerpt(), $template );
 				} else {
 					$template = str_replace( '%%CONTENT%%', get_the_content(), $template );
