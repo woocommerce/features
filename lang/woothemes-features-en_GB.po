@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Features v1.2.0\n"
+"Project-Id-Version: Features v1.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2012-11-27 08:54:04+0000\n"
+"PO-Revision-Date: 2013-01-03 08:18:28+0000\n"
 "Last-Translator: Matt <matt@woothemes.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -235,12 +235,12 @@ msgstr ""
 msgid "Specified Order Setting"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:223
+#: classes/class-woothemes-widget-features.php:224
 #@ woothemes-features
 msgid "Ascending"
 msgstr ""
 
-#: classes/class-woothemes-widget-features.php:224
+#: classes/class-woothemes-widget-features.php:225
 #@ woothemes-features
 msgid "Descending"
 msgstr ""
@@ -268,5 +268,10 @@ msgstr ""
 #: classes/class-woothemes-widget-features.php:197
 #@ woothemes-features
 msgid "Display a specific feature, rather than a list."
+msgstr ""
+
+#: classes/class-woothemes-widget-features.php:213
+#@ woothemes-features
+msgid "Random Order"
 msgstr ""
 
