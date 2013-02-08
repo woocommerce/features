@@ -19,7 +19,17 @@ Looking for a helping hand? [View plugin documentation](http://wordpress.org/ext
 Looking to contribute code to this plugin? [Fork the repository over at GitHub](http://github.com/woothemes/features/).
 (submit pull requests to the "develop" branch)
 
-== Usage ==
+== Installation ==
+
+Installing "Features by WooThemes" can be done either by searching for "Features by WooThemes" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
+
+1. Download the plugin via WordPress.org.
+1. Upload the ZIP file through the "Plugins > Add New > Upload" screen in your WordPress dashboard.
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Place `<?php do_action( 'woothemes_features' ); ?>` in your templates, or use the provided widget or shortcode.
+
+
+= Usage =
 
 To display your features via a theme or a custom plugin, please use the following code:
 
@@ -60,7 +70,7 @@ The various options for the "orderby" parameter are:
 
 The same arguments apply to the shortcode which is `[woothemes_features]` and the template tag, which is `<?php woothemes_features(); ?>`.
 
-== Usage Examples ==
+= Usage Examples =
 
 Adjusting the limit and image dimension, using the arguments in the three possible methods:
 
@@ -75,15 +85,6 @@ woothemes_features() template tag:
 [woothemes_features] shortcode:
 
 `[woothemes_features limit="10" size="100"]`
-
-== Installation ==
-
-Installing "Features by WooThemes" can be done either by searching for "Features by WooThemes" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
-
-1. Download the plugin via WordPress.org.
-1. Upload the ZIP file through the "Plugins > Add New > Upload" screen in your WordPress dashboard.
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action( 'woothemes_features' ); ?>` in your templates, or use the provided widget or shortcode.
 
 == Frequently Asked Questions ==
 
