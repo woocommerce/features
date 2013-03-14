@@ -105,10 +105,12 @@ function woothemes_features ( $args = '' ) {
 				$template = str_replace( '%%TITLE%%', $title, $template );
 
 				if ( '' != $post->post_excerpt ) {
-					$template = str_replace( '%%CONTENT%%', get_the_excerpt(), $template );
+					$content = get_the_excerpt();
 				} else {
-					$template = str_replace( '%%CONTENT%%', get_the_content(), $template );
+					$content = get_the_content();
 				}
+				$content = apply_filters( 'woothemes_features_content', $content, $post );
+				$template = str_replace( '%%CONTENT%%', $content, $template );
 
 				$template = apply_filters( 'woothemes_features_template', $template, $post );
 
