@@ -4,7 +4,7 @@ Donate link: http://woothemes.com/
 Tags: features, widget, shortcode, template-tag, services
 Requires at least: 3.4.2
 Tested up to: 3.5
-Stable tag: 1.2.2
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,6 +101,9 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 
 == Upgrade Notice ==
 
+= 1.3.0 =
+* Adds "woothemes_features_content" filter.
+
 = 1.2.2 =
 * Minor bugfixes to the "order" directions options and additions to the "woothemes_features_html" filter.
 
@@ -122,6 +125,10 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * Initial release. Woo!
 
 == Changelog ==
+
+= 1.3.0 =
+* 2013-03-18.
+* Adds "woothemes_features_content" filter for modifying the content of features when outputting the features list.
 
 = 1.2.2 =
 * 2013-01-03
