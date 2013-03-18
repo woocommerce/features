@@ -32,42 +32,42 @@ function woothemes_features ( $args = '' ) {
 	global $post;
 
 	$defaults = array(
-		'limit' => 5, 
-		'orderby' => 'menu_order', 
-		'order' => 'DESC', 
-		'id' => 0, 
-		'echo' => true, 
-		'size' => 50, 
-		'per_row' => 3, 
-		'link_title' => true, 
-		'title' => '', 
-		'before' => '<div class="widget widget_woothemes_features">', 
-		'after' => '</div><!--/.widget widget_woothemes_features-->', 
-		'before_title' => '<h2>', 
+		'limit' => 5,
+		'orderby' => 'menu_order',
+		'order' => 'DESC',
+		'id' => 0,
+		'echo' => true,
+		'size' => 50,
+		'per_row' => 3,
+		'link_title' => true,
+		'title' => '',
+		'before' => '<div class="widget widget_woothemes_features">',
+		'after' => '</div><!--/.widget widget_woothemes_features-->',
+		'before_title' => '<h2>',
 		'after_title' => '</h2>'
 	);
-	
+
 	$args = wp_parse_args( $args, $defaults );
-	
+
 	// Allow child themes/plugins to filter here.
 	$args = apply_filters( 'woothemes_features_args', $args );
 	$html = '';
 
 	do_action( 'woothemes_features_before', $args );
-		
+
 		// The Query.
 		$query = woothemes_get_features( $args );
 
 		// The Display.
 		if ( ! is_wp_error( $query ) && is_array( $query ) && count( $query ) > 0 ) {
 			$html .= $args['before'] . "\n";
-			
+
 			if ( '' != $args['title'] ) {
 				$html .= $args['before_title'] . esc_html( $args['title'] ) . $args['after_title'] . "\n";
 			}
 
 			$html .= '<div class="features">' . "\n";
-			
+
 			// Begin templating logic.
 			$tpl = '<div class="%%CLASS%%">%%IMAGE%%<h3 class="feature-title">%%TITLE%%</h3><div class="feature-content">%%CONTENT%%</div></div>';
 			$tpl = apply_filters( 'woothemes_features_item_template', $tpl, $args );
@@ -78,7 +78,7 @@ function woothemes_features ( $args = '' ) {
 				$i++;
 
 				setup_postdata( $post );
-				
+
 				$class = 'feature';
 
 				if( ( 0 == $i % $args['per_row'] ) ) {
@@ -124,15 +124,15 @@ function woothemes_features ( $args = '' ) {
 
 			wp_reset_postdata();
 		}
-		
+
 		// Allow child themes/plugins to filter here.
 		$html = apply_filters( 'woothemes_features_html', $html, $query, $args );
-		
+
 		if ( $args['echo'] != true ) { return $html; }
-		
+
 		// Should only run is "echo" is set to true.
 		echo $html;
-		
+
 		do_action( 'woothemes_features_after', $args ); // Only if "echo" is set to true.
 } // End woothemes_features()
 }
@@ -142,13 +142,13 @@ function woothemes_features_shortcode ( $atts, $content = null ) {
 	$args = (array)$atts;
 
 	$defaults = array(
-		'limit' => 5, 
-		'orderby' => 'menu_order', 
-		'order' => 'DESC', 
-		'id' => 0, 
-		'echo' => true, 
-		'size' => 50, 
-		'per_row' => 3, 
+		'limit' => 5,
+		'orderby' => 'menu_order',
+		'order' => 'DESC',
+		'id' => 0,
+		'echo' => true,
+		'size' => 50,
+		'per_row' => 3,
 		'link_title' => true
 	);
 
