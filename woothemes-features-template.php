@@ -143,7 +143,7 @@ function woothemes_features ( $args = '' ) {
 if ( ! function_exists( 'woothemes_features_shortcode' ) ) {
 /**
  * The shortcode function.
- * @since  1.1.0
+ * @since  1.0.0
  * @param  array  $atts    Shortcode attributes.
  * @param  string $content If the shortcode is a wrapper, this is the content being wrapped.
  * @return string          Output using the template tag.

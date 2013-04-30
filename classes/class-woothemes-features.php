@@ -446,7 +446,9 @@ class Woothemes_Features {
 
 		// Setup the taxonomy query.
 		if ( '' != $tax_field_type ) {
-			$query_args['tax_query'] = array( array( 'taxonomy' => 'feature-category', 'field' => $tax_field_type, 'terms' => array( $args['category'] ) ) );
+			$term = $args['category'];
+			if ( is_string( $term ) ) { $term = esc_html( $term ); } else { $term = intval( $term ); }
+			$query_args['tax_query'] = array( array( 'taxonomy' => 'feature-category', 'field' => $tax_field_type, 'terms' => array( $term ) ) );
 		}
 
 		// The Query.
