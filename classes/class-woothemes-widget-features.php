@@ -90,6 +90,7 @@ class Woothemes_Widget_Features extends WP_Widget {
 		if ( isset( $instance['specific_id'] ) && ( 0 < count( $instance['specific_id'] ) ) ) { $args['id'] = intval( $instance['specific_id'] ); }
 		if ( isset( $instance['size'] ) && ( 0 < count( $instance['size'] ) ) ) { $args['size'] = intval( $instance['size'] ); }
 		if ( isset( $instance['per_row'] ) && ( 0 < count( $instance['per_row'] ) ) ) { $args['per_row'] = intval( $instance['per_row'] ); }
+		if ( isset( $instance['category'] ) && is_numeric( $instance['category'] ) ) $args['category'] = intval( $instance['category'] );
 
 		// Select boxes.
 		if ( isset( $instance['orderby'] ) && in_array( $instance['orderby'], array_keys( $this->get_orderby_options() ) ) ) { $args['orderby'] = $instance['orderby']; }
@@ -120,6 +121,7 @@ class Woothemes_Widget_Features extends WP_Widget {
 		$instance['specific_id'] = intval( $new_instance['specific_id'] );
 		$instance['size'] = intval( $new_instance['size'] );
 		$instance['per_row'] = intval( $new_instance['per_row'] );
+		$instance['category'] = intval( $new_instance['category'] );
 
 		/* The select box is returning a text value, so we escape it. */
 		$instance['orderby'] = esc_attr( $new_instance['orderby'] );
@@ -146,7 +148,8 @@ class Woothemes_Widget_Features extends WP_Widget {
 			'order' => 'DESC',
 			'specific_id' => '',
 			'size' => 50,
-			'per_row' => 3
+			'per_row' => 3,
+			'category' => 0
 		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
@@ -188,6 +191,14 @@ class Woothemes_Widget_Features extends WP_Widget {
 				<option value="<?php echo $k; ?>"<?php selected( $instance['order'], $k ); ?>><?php echo $v; ?></option>
 			<?php } ?>
 			</select>
+		</p>
+		<!-- Widget Category: Select Input -->
+		<p>
+			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e( 'Category:', 'woothemes-features' ); ?></label>
+			<?php
+				$dropdown_args = array( 'taxonomy' => 'feature-category', 'class' => 'widefat', 'show_option_all' => __( 'All', 'woothemes-features' ), 'id' => $this->get_field_id( 'category' ), 'name' => $this->get_field_name( 'category' ), 'selected' => $instance['category'] );
+				wp_dropdown_categories( $dropdown_args );
+			?>
 		</p>
 		<!-- Widget ID: Text Input -->
 		<p>

@@ -44,7 +44,8 @@ function woothemes_features ( $args = '' ) {
 		'before' => '<div class="widget widget_woothemes_features">',
 		'after' => '</div><!--/.widget widget_woothemes_features-->',
 		'before_title' => '<h2>',
-		'after_title' => '</h2>'
+		'after_title' => '</h2>',
+		'category' => 0
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -66,7 +67,7 @@ function woothemes_features ( $args = '' ) {
 				$html .= $args['before_title'] . esc_html( $args['title'] ) . $args['after_title'] . "\n";
 			}
 
-			$html .= '<div class="features">' . "\n";
+			$html .= '<div class="features columns-' . esc_attr( intval( $args['per_row'] ) ) . '">' . "\n";
 
 			// Begin templating logic.
 			$tpl = '<div class="%%CLASS%%">%%IMAGE%%<h3 class="feature-title">%%TITLE%%</h3><div class="feature-content">%%CONTENT%%</div></div>';
@@ -140,6 +141,13 @@ function woothemes_features ( $args = '' ) {
 }
 
 if ( ! function_exists( 'woothemes_features_shortcode' ) ) {
+/**
+ * The shortcode function.
+ * @since  1.1.0
+ * @param  array  $atts    Shortcode attributes.
+ * @param  string $content If the shortcode is a wrapper, this is the content being wrapped.
+ * @return string          Output using the template tag.
+ */
 function woothemes_features_shortcode ( $atts, $content = null ) {
 	$args = (array)$atts;
 
@@ -151,7 +159,8 @@ function woothemes_features_shortcode ( $atts, $content = null ) {
 		'echo' => true,
 		'size' => 50,
 		'per_row' => 3,
-		'link_title' => true
+		'link_title' => true,
+		'category' => 0
 	);
 
 	$args = shortcode_atts( $defaults, $atts );
@@ -164,6 +173,7 @@ function woothemes_features_shortcode ( $atts, $content = null ) {
 	if ( isset( $args['id'] ) ) $args['id'] = intval( $args['id'] );
 	if ( isset( $args['size'] ) &&  ( 0 < intval( $args['size'] ) ) ) $args['size'] = intval( $args['size'] );
 	if ( isset( $args['per_row'] ) &&  ( 0 < intval( $args['per_row'] ) ) ) $args['per_row'] = intval( $args['per_row'] );
+	if ( isset( $args['category'] ) && is_numeric( $args['category'] ) ) $args['category'] = intval( $args['category'] );
 
 	// Fix booleans.
 	foreach ( array( 'link_title' ) as $k => $v ) {
@@ -179,4 +189,17 @@ function woothemes_features_shortcode ( $atts, $content = null ) {
 }
 
 add_shortcode( 'woothemes_features', 'woothemes_features_shortcode' );
+
+if ( ! function_exists( 'woothemes_features_content_default_filters' ) ) {
+/**
+ * Adds default filters to the "woothemes_features_content" filter point.
+ * @since  1.3.0
+ * @return void
+ */
+function woothemes_features_content_default_filters () {
+	add_filter( 'woothemes_features_content', 'do_shortcode' );
+} // End woothemes_features_content_default_filters()
+
+add_action( 'woothemes_features_before', 'woothemes_features_content_default_filters' );
+}
 ?>

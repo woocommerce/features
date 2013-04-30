@@ -19,6 +19,7 @@ class Woothemes_Features {
 	private $token;
 	public $version;
 	private $file;
+	public $taxonomy_category;
 
 	/**
 	 * Constructor function.
@@ -35,30 +36,31 @@ class Woothemes_Features {
 		$this->token = 'feature';
 
 		$this->load_plugin_textdomain();
-		add_action( 'init', array( &$this, 'load_localisation' ), 0 );
+		add_action( 'init', array( $this, 'load_localisation' ), 0 );
 
 		// Run this on activation.
-		register_activation_hook( $this->file, array( &$this, 'activation' ) );
+		register_activation_hook( $this->file, array( $this, 'activation' ) );
 
-		add_action( 'init', array( &$this, 'register_post_type' ) );
+		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'init', array( $this, 'register_taxonomy' ) );
 
 		if ( is_admin() ) {
 			global $pagenow;
 
-			add_action( 'admin_menu', array( &$this, 'meta_box_setup' ), 20 );
-			add_action( 'save_post', array( &$this, 'meta_box_save' ) );
-			add_filter( 'enter_title_here', array( &$this, 'enter_title_here' ) );
-			add_action( 'admin_print_styles', array( &$this, 'enqueue_admin_styles' ), 10 );
-			add_filter( 'post_updated_messages', array( &$this, 'updated_messages' ) );
+			add_action( 'admin_menu', array( $this, 'meta_box_setup' ), 20 );
+			add_action( 'save_post', array( $this, 'meta_box_save' ) );
+			add_filter( 'enter_title_here', array( $this, 'enter_title_here' ) );
+			add_action( 'admin_print_styles', array( $this, 'enqueue_admin_styles' ), 10 );
+			add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
 
 			if ( $pagenow == 'edit.php' && isset( $_GET['post_type'] ) && esc_attr( $_GET['post_type'] ) == $this->token ) {
-				add_filter( 'manage_edit-' . $this->token . '_columns', array( &$this, 'register_custom_column_headings' ), 10, 1 );
-				add_action( 'manage_posts_custom_column', array( &$this, 'register_custom_columns' ), 10, 2 );
+				add_filter( 'manage_edit-' . $this->token . '_columns', array( $this, 'register_custom_column_headings' ), 10, 1 );
+				add_action( 'manage_posts_custom_column', array( $this, 'register_custom_columns' ), 10, 2 );
 			}
 		}
 
-		add_action( 'after_setup_theme', array( &$this, 'ensure_post_thumbnails_support' ) );
-		add_action( 'after_theme_setup', array( &$this, 'register_image_sizes' ) );
+		add_action( 'after_setup_theme', array( $this, 'ensure_post_thumbnails_support' ) );
+		add_action( 'after_theme_setup', array( $this, 'register_image_sizes' ) );
 	} // End __construct()
 
 	/**
@@ -105,6 +107,17 @@ class Woothemes_Features {
 		);
 		register_post_type( $this->token, $args );
 	} // End register_post_type()
+
+	/**
+	 * Register the "feature-category" taxonomy.
+	 * @access public
+	 * @since  1.3.0
+	 * @return void
+	 */
+	public function register_taxonomy () {
+		$this->taxonomy_category = new Woothemes_Features_Taxonomy(); // Leave arguments empty, to use the default arguments.
+		$this->taxonomy_category->register();
+	} // End register_taxonomy()
 
 	/**
 	 * Add custom columns for the "manage" screen of this post type.
@@ -205,7 +218,7 @@ class Woothemes_Features {
 	 * @return void
 	 */
 	public function meta_box_setup () {
-		add_meta_box( 'feature-data', __( 'Feature Details', 'woothemes-features' ), array( &$this, 'meta_box_content' ), $this->token, 'normal', 'high' );
+		add_meta_box( 'feature-data', __( 'Feature Details', 'woothemes-features' ), array( $this, 'meta_box_content' ), $this->token, 'normal', 'high' );
 	} // End meta_box_setup()
 
 	/**
@@ -385,7 +398,8 @@ class Woothemes_Features {
 			'limit' => 5,
 			'orderby' => 'menu_order',
 			'order' => 'DESC',
-			'id' => 0
+			'id' => 0,
+			'category' => 0
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -416,6 +430,23 @@ class Woothemes_Features {
 
 		if ( ! in_array( $query_args['post_type'], get_post_types() ) ) {
 			$query_args['post_type'] = 'feature';
+		}
+
+		$tax_field_type = '';
+
+		// If the category ID is specified.
+		if ( is_numeric( $args['category'] ) && 0 < intval( $args['category'] ) ) {
+			$tax_field_type = 'id';
+		}
+
+		// If the category slug is specified.
+		if ( ! is_numeric( $args['category'] ) && is_string( $args['category'] ) ) {
+			$tax_field_type = 'slug';
+		}
+
+		// Setup the taxonomy query.
+		if ( '' != $tax_field_type ) {
+			$query_args['tax_query'] = array( array( 'taxonomy' => 'feature-category', 'field' => $tax_field_type, 'terms' => array( $args['category'] ) ) );
 		}
 
 		// The Query.
