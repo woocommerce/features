@@ -88,16 +88,19 @@ function woothemes_features ( $args = '' ) {
 					$class .= ' first';
 				}
 
+				$image_size = apply_filters( 'woothemes_features_image_size', 'thumbnail', $post );
+
+				$image = get_the_post_thumbnail( $post->ID, $image_size );
 
 				$title = get_the_title();
 				if ( true == $args['link_title'] ) {
-					$post->image = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $post->image . '</a>';
+					$image = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $image . '</a>';
 					$title = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $title . '</a>';
 				}
 
 				// Optionally display the image, if it is available.
-				if ( isset( $post->image ) && ( '' != $post->image ) ) {
-					$template = str_replace( '%%IMAGE%%', $post->image, $template );
+				if ( has_post_thumbnail() ) {
+					$template = str_replace( '%%IMAGE%%', $image, $template );
 				} else {
 					$template = str_replace( '%%IMAGE%%', '', $template );
 				}
