@@ -35,7 +35,7 @@ function woothemes_features ( $args = '' ) {
 		'limit' => 5,
 		'orderby' => 'menu_order',
 		'order' => 'DESC',
-		'id' => 0,
+		'id' => array( ),
 		'echo' => true,
 		'size' => 50,
 		'per_row' => 3,
@@ -173,7 +173,6 @@ function woothemes_features_shortcode ( $atts, $content = null ) {
 
 	// Fix integers.
 	if ( isset( $args['limit'] ) ) $args['limit'] = intval( $args['limit'] );
-	if ( isset( $args['id'] ) ) $args['id'] = intval( $args['id'] );
 	if ( isset( $args['size'] ) &&  ( 0 < intval( $args['size'] ) ) ) $args['size'] = intval( $args['size'] );
 	if ( isset( $args['per_row'] ) &&  ( 0 < intval( $args['per_row'] ) ) ) $args['per_row'] = intval( $args['per_row'] );
 	if ( isset( $args['category'] ) && is_numeric( $args['category'] ) ) $args['category'] = intval( $args['category'] );

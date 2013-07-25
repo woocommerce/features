@@ -398,7 +398,7 @@ class Woothemes_Features {
 			'limit' => 5,
 			'orderby' => 'menu_order',
 			'order' => 'DESC',
-			'id' => 0,
+			'id' => array( 0 ),
 			'category' => 0
 		);
 
@@ -415,8 +415,19 @@ class Woothemes_Features {
 		$query_args['order'] = $args['order'];
 		$query_args['suppress_filters'] = 0;
 
-		if ( is_numeric( $args['id'] ) && ( intval( $args['id'] ) > 0 ) ) {
-			$query_args['p'] = intval( $args['id'] );
+		// Format the id parameter
+		if ( ! is_array( $args['id'] ) ) {
+			// Explode a comma separated string into an array
+			$args['id'] = explode( ",", $args['id'] );
+		}
+		if ( ! empty( $args['id'] ) && is_array( $args['id'] ) ) {
+			foreach( $args['id'] as $key => $value ) {
+				// Unset non numeric or invalid options
+				if ( ! is_numeric( $value ) || ( intval( $value ) <= 0 ) ) {
+					unset( $args['id'][$key] );
+				}
+			}
+			$query_args['post__in'] = $args['id'];
 		}
 
 		// Whitelist checks.
