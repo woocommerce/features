@@ -1,10 +1,10 @@
 === Features by WooThemes ===
-Contributors: woothemes, mattyza, jameskoster
+Contributors: woothemes, mattyza, jameskoster, hlashbrooke
 Donate link: http://woothemes.com/
 Tags: features, widget, shortcode, template-tag, services
 Requires at least: 3.4.2
-Tested up to: 3.5.1
-Stable tag: 1.3.0
+Tested up to: 3.5.2
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,10 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 
 == Upgrade Notice ==
 
+= 1.3.1 =
+* Adds filters for the single features and features archives URL slugs
+* Adds a flush_rewrite_rules() call on plugin activation
+
 = 1.3.0 =
 * Adds "woothemes_features_content" filter and shortcode support. Adds "feature-category" taxonomy.
 
@@ -126,6 +130,12 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * Initial release. Woo!
 
 == Changelog ==
+
+= 1.3.1 =
+* 2013-08-01.
+* Adds "woothemes_features_single_slug" as a filter for the single feature URL slug
+* Adds "woothemes_features_archive_slug" as a filter for the features archive URL slug
+* Adds a flush_rewrite_rules() call on plugin activation
 
 = 1.3.0 =
 * 2013-04-30.
