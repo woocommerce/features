@@ -1,15 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Features v1.3.0\n"
+"Project-Id-Version: Features v1.3.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-04-30 12:39:20+0000\n"
+"PO-Revision-Date: 2013-07-31 12:39:51+0000\n"
 "Last-Translator: Matt <matt@woothemes.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED KINGDOM\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -106,74 +107,74 @@ msgstr ""
 msgid "No %s Found In Trash"
 msgstr ""
 
-#: classes/class-woothemes-features.php:161
+#: classes/class-woothemes-features.php:165
 #@ woothemes-features
 msgid "Image"
 msgstr ""
 
-#: classes/class-woothemes-features.php:195
+#: classes/class-woothemes-features.php:199
 #, php-format
 #@ woothemes-features
 msgid "Feature updated. %sView feature%s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:196
+#: classes/class-woothemes-features.php:200
 #@ woothemes-features
 msgid "Custom field updated."
 msgstr ""
 
-#: classes/class-woothemes-features.php:197
+#: classes/class-woothemes-features.php:201
 #@ woothemes-features
 msgid "Custom field deleted."
 msgstr ""
 
-#: classes/class-woothemes-features.php:198
+#: classes/class-woothemes-features.php:202
 #@ woothemes-features
 msgid "Feature updated."
 msgstr ""
 
 #. translators: %s: date and time of the revision
-#: classes/class-woothemes-features.php:200
+#: classes/class-woothemes-features.php:204
 #, php-format
 #@ woothemes-features
 msgid "Feature restored to revision from %s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:201
+#: classes/class-woothemes-features.php:205
 #, php-format
 #@ woothemes-features
 msgid "Feature published. %sView feature%s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:202
-#@ default
-msgid "Feature saved."
-msgstr ""
-
-#: classes/class-woothemes-features.php:203
-#, php-format
-#@ woothemes-features
-msgid "Feature submitted. %sPreview feature%s"
-msgstr ""
-
-#: classes/class-woothemes-features.php:204
-#, php-format
-#@ woothemes-features
-msgid "Feature scheduled for: %1$s. %2$sPreview feature%3$s"
-msgstr ""
-
 #: classes/class-woothemes-features.php:206
 #@ default
-msgid "M j, Y @ G:i"
+msgid "Feature saved."
 msgstr ""
 
 #: classes/class-woothemes-features.php:207
 #, php-format
 #@ woothemes-features
+msgid "Feature submitted. %sPreview feature%s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:208
+#, php-format
+#@ woothemes-features
+msgid "Feature scheduled for: %1$s. %2$sPreview feature%3$s"
+msgstr ""
+
+#: classes/class-woothemes-features.php:210
+#@ default
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: classes/class-woothemes-features.php:211
+#, php-format
+#@ woothemes-features
 msgid "Feature draft updated. %sPreview feature%s"
 msgstr ""
 
-#: classes/class-woothemes-features.php:320
+#: classes/class-woothemes-features.php:324
 #@ woothemes-features
 msgid "Enter the feature title here"
 msgstr ""
@@ -248,17 +249,17 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
-#: classes/class-woothemes-features.php:221
+#: classes/class-woothemes-features.php:225
 #@ woothemes-features
 msgid "Feature Details"
 msgstr ""
 
-#: classes/class-woothemes-features.php:346
+#: classes/class-woothemes-features.php:350
 #@ woothemes-features
 msgid "URL"
 msgstr ""
 
-#: classes/class-woothemes-features.php:347
+#: classes/class-woothemes-features.php:351
 #@ woothemes-features
 msgid "Enter a URL that applies to this feature (for example: http://woothemes.com/)."
 msgstr ""
@@ -346,5 +347,17 @@ msgstr ""
 #: classes/class-woothemes-widget-features.php:199
 #@ woothemes-features
 msgid "All"
+msgstr ""
+
+#: classes/class-woothemes-features.php:94
+#@ woothemes-features
+msgctxt "single post url slug"
+msgid "feature"
+msgstr ""
+
+#: classes/class-woothemes-features.php:95
+#@ woothemes-features
+msgctxt "post archive url slug"
+msgid "features"
 msgstr ""
 

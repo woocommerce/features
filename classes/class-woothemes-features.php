@@ -90,6 +90,10 @@ class Woothemes_Features {
 			'menu_name' => __( 'Features', 'woothemes-features' )
 
 		);
+
+		$single_slug = apply_filters( 'woothemes_features_single_slug', _x( 'feature', 'single post url slug', 'woothemes-features' ) );
+		$archive_slug = apply_filters( 'woothemes_features_archive_slug', _x( 'features', 'post archive url slug', 'woothemes-features' ) );
+
 		$args = array(
 			'labels' => $labels,
 			'public' => true,
@@ -97,9 +101,9 @@ class Woothemes_Features {
 			'show_ui' => true,
 			'show_in_menu' => true,
 			'query_var' => true,
-			'rewrite' => array( 'slug' => 'feature' ),
+			'rewrite' => array( 'slug' => $single_slug ),
 			'capability_type' => 'post',
-			'has_archive' => true,
+			'has_archive' => $archive_slug,
 			'hierarchical' => false,
 			'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes' ),
 			'menu_position' => 5,
@@ -508,6 +512,7 @@ class Woothemes_Features {
 	 */
 	public function activation () {
 		$this->register_plugin_version();
+		$this->flush_rewrite_rules();
 	} // End activation()
 
 	/**
@@ -521,6 +526,17 @@ class Woothemes_Features {
 			update_option( 'woothemes-features' . '-version', $this->version );
 		}
 	} // End register_plugin_version()
+
+	/**
+	 * Flush the rewrite rules
+	 * @access public
+	 * @since 1.3.1
+	 * @return void
+	 */
+	private function flush_rewrite_rules () {
+		$this->register_post_type();
+		flush_rewrite_rules();
+	} // End flush_rewrite_rules()
 
 	/**
 	 * Ensure that "post-thumbnails" support is available for those themes that don't register it.
