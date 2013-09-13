@@ -74,36 +74,36 @@ class Woothemes_Features {
 	 * @return void
 	 */
 	public function register_post_type () {
+		$rewrite = array( 'slug' => apply_filters( 'woothemes_features_rewrite_slug', 'feature' ) );
 		$labels = array(
-			'name' => _x( 'Features', 'post type general name', 'woothemes-features' ),
-			'singular_name' => _x( 'Feature', 'post type singular name', 'woothemes-features' ),
-			'add_new' => _x( 'Add New', 'feature', 'woothemes-features' ),
-			'add_new_item' => sprintf( __( 'Add New %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
-			'edit_item' => sprintf( __( 'Edit %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
-			'new_item' => sprintf( __( 'New %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
-			'all_items' => sprintf( __( 'All %s', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
-			'view_item' => sprintf( __( 'View %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
-			'search_items' => sprintf( __( 'Search %a', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
-			'not_found' =>  sprintf( __( 'No %s Found', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
+			'name'               => _x( 'Features', 'post type general name', 'woothemes-features' ),
+			'singular_name'      => _x( 'Feature', 'post type singular name', 'woothemes-features' ),
+			'add_new'            => _x( 'Add New', 'feature', 'woothemes-features' ),
+			'add_new_item'       => sprintf( __( 'Add New %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
+			'edit_item'          => sprintf( __( 'Edit %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
+			'new_item'           => sprintf( __( 'New %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
+			'all_items'          => sprintf( __( 'All %s', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
+			'view_item'          => sprintf( __( 'View %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
+			'search_items'       => sprintf( __( 'Search %a', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
+			'not_found'          => sprintf( __( 'No %s Found', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
 			'not_found_in_trash' => sprintf( __( 'No %s Found In Trash', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
-			'parent_item_colon' => '',
-			'menu_name' => __( 'Features', 'woothemes-features' )
-
+			'parent_item_colon'  => '',
+			'menu_name'          => __( 'Features', 'woothemes-features' )
 		);
 		$args = array(
-			'labels' => $labels,
-			'public' => true,
-			'publicly_queryable' => true,
-			'show_ui' => true,
-			'show_in_menu' => true,
-			'query_var' => true,
-			'rewrite' => array( 'slug' => 'feature' ),
-			'capability_type' => 'post',
-			'has_archive' => true,
-			'hierarchical' => false,
-			'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes' ),
-			'menu_position' => 5,
-			'menu_icon' => ''
+			'labels'                   => $labels,
+			'public'                   => true,
+			'publicly_queryable'       => true,
+			'show_ui'                  => true,
+			'show_in_menu'             => true,
+			'query_var'                => true,
+			'rewrite' 				   => $rewrite,
+			'capability_type'          => 'post',
+			'has_archive'              => true,
+			'hierarchical'             => false,
+			'supports'                 => array( 'title', 'editor', 'excerpt', 'thumbnail', 'page-attributes' ),
+			'menu_position'            => 5,
+			'menu_icon'                => ''
 		);
 		register_post_type( $this->token, $args );
 	} // End register_post_type()
