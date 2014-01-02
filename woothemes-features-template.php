@@ -31,22 +31,22 @@ if ( ! function_exists( 'woothemes_features' ) ) {
 function woothemes_features ( $args = '' ) {
 	global $post;
 
-	$defaults = array(
-		'limit' => 5,
-		'orderby' => 'menu_order',
-		'order' => 'DESC',
-		'id' => 0,
-		'echo' => true,
-		'size' => 50,
-		'per_row' => 3,
-		'link_title' => true,
-		'title' => '',
-		'before' => '<div class="widget widget_woothemes_features">',
-		'after' => '</div><!--/.widget widget_woothemes_features-->',
-		'before_title' => '<h2>',
-		'after_title' => '</h2>',
-		'category' => 0
-	);
+	$defaults = apply_filters( 'woothemes_features_default_args', array(
+		'limit' 		=> 5,
+		'orderby' 		=> 'menu_order',
+		'order' 		=> 'DESC',
+		'id' 			=> 0,
+		'echo' 			=> true,
+		'size' 			=> 50,
+		'per_row' 		=> 3,
+		'link_title' 	=> true,
+		'title' 		=> '',
+		'before' 		=> '<div class="widget widget_woothemes_features">',
+		'after' 		=> '</div><!--/.widget widget_woothemes_features-->',
+		'before_title' 	=> '<h2>',
+		'after_title' 	=> '</h2>',
+		'category' 		=> 0,
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 

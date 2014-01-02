@@ -134,6 +134,7 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 = 1.4.0 =
 * 2014-01-02
 * UI tweaks for wp 3.8.
+* Default args are now filterable via woothemes_features_default_args.
 
 = 1.3.1 =
 * 2013-08-01.
