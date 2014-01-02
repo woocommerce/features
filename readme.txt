@@ -3,8 +3,8 @@ Contributors: woothemes, mattyza, jameskoster, hlashbrooke
 Donate link: http://woothemes.com/
 Tags: features, widget, shortcode, template-tag, services
 Requires at least: 3.4.2
-Tested up to: 3.5.2
-Stable tag: 1.3.1
+Tested up to: 3.8.0
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -130,6 +130,10 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * Initial release. Woo!
 
 == Changelog ==
+
+= 1.4.0 =
+* 2014-01-02
+* UI tweaks for wp 3.8.
 
 = 1.3.1 =
 * 2013-08-01.
