@@ -109,6 +109,8 @@ function woothemes_features ( $args = '' ) {
 				$template = str_replace( '%%CLASS%%', $class, $template );
 				$template = str_replace( '%%TITLE%%', $title, $template );
 
+				$template = str_replace( '%%PERMALINK%%', esc_url( get_permalink( get_the_ID() ) ), $template );
+
 				if ( '' != $post->post_excerpt ) {
 					$content = get_the_excerpt();
 				} else {
