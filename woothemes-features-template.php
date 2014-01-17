@@ -31,22 +31,23 @@ if ( ! function_exists( 'woothemes_features' ) ) {
 function woothemes_features ( $args = '' ) {
 	global $post;
 
-	$defaults = array(
-		'limit' => 5,
-		'orderby' => 'menu_order',
-		'order' => 'DESC',
-		'id' => 0,
-		'echo' => true,
-		'size' => 50,
-		'per_row' => 3,
-		'link_title' => true,
-		'title' => '',
-		'before' => '<div class="widget widget_woothemes_features">',
-		'after' => '</div><!--/.widget widget_woothemes_features-->',
-		'before_title' => '<h2>',
-		'after_title' => '</h2>',
-		'category' => 0
-	);
+	$defaults = apply_filters( 'woothemes_features_default_args', array(
+		'limit' 			=> 5,
+		'orderby' 			=> 'menu_order',
+		'order' 			=> 'DESC',
+		'id' 				=> 0,
+		'echo' 				=> true,
+		'size' 				=> 50,
+		'per_row' 			=> 3,
+		'link_title' 		=> true,
+		'custom_links_only' => true,
+		'title' 			=> '',
+		'before' 			=> '<div class="widget widget_woothemes_features">',
+		'after' 			=> '</div><!--/.widget widget_woothemes_features-->',
+		'before_title' 		=> '<h2>',
+		'after_title' 		=> '</h2>',
+		'category' 			=> 0
+	) );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -88,22 +89,27 @@ function woothemes_features ( $args = '' ) {
 					$class .= ' first';
 				}
 
+				$image_size = apply_filters( 'woothemes_features_image_size', 'thumbnail', $post );
+
+				$image = get_the_post_thumbnail( $post->ID, $image_size );
 
 				$title = get_the_title();
-				if ( true == $args['link_title'] ) {
-					$post->image = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $post->image . '</a>';
+				if ( true == $args['link_title'] && '' != $post->url ) {
+					$image = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $image . '</a>';
 					$title = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $title . '</a>';
 				}
 
 				// Optionally display the image, if it is available.
-				if ( isset( $post->image ) && ( '' != $post->image ) ) {
-					$template = str_replace( '%%IMAGE%%', $post->image, $template );
+				if ( has_post_thumbnail() ) {
+					$template = str_replace( '%%IMAGE%%', $image, $template );
 				} else {
 					$template = str_replace( '%%IMAGE%%', '', $template );
 				}
 
 				$template = str_replace( '%%CLASS%%', $class, $template );
 				$template = str_replace( '%%TITLE%%', $title, $template );
+
+				$template = str_replace( '%%PERMALINK%%', esc_url( get_permalink( get_the_ID() ) ), $template );
 
 				if ( '' != $post->post_excerpt ) {
 					$content = get_the_excerpt();
@@ -160,6 +166,7 @@ function woothemes_features_shortcode ( $atts, $content = null ) {
 		'size' => 50,
 		'per_row' => 3,
 		'link_title' => true,
+		'custom_links_only' => false,
 		'category' => 0
 	);
 
@@ -176,7 +183,7 @@ function woothemes_features_shortcode ( $atts, $content = null ) {
 	if ( isset( $args['category'] ) && is_numeric( $args['category'] ) ) $args['category'] = intval( $args['category'] );
 
 	// Fix booleans.
-	foreach ( array( 'link_title' ) as $k => $v ) {
+	foreach ( array( 'link_title', 'custom_links_only' ) as $k => $v ) {
 		if ( isset( $args[$v] ) && ( 'true' == $args[$v] ) ) {
 			$args[$v] = true;
 		} else {
