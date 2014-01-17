@@ -141,8 +141,6 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * UI tweaks for WordPress 3.8.
 * Default args are now filterable via woothemes_features_default_args.
 * Adds the ability to link only features with a custom URL set.
-* Adds a %%PERMALINK%% template tag to the templating engine.
-* Adjusts the "id" parameter to cater for multiple ID values.
 
 = 1.3.1 =
 * 2013-08-01.
