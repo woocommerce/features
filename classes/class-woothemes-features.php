@@ -403,7 +403,8 @@ class Woothemes_Features {
 			'orderby' => 'menu_order',
 			'order' => 'DESC',
 			'id' => 0,
-			'category' => 0
+			'category' => 0,
+			'custom_links_only' => false
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -470,7 +471,11 @@ class Woothemes_Features {
 				if ( isset( $meta['_url'][0] ) && '' != $meta['_url'][0] ) {
 					$query[$k]->url = esc_url( $meta['_url'][0] );
 				} else {
-					$query[$k]->url = get_permalink( $v->ID );
+					if ( true == $args['custom_links_only'] ) {
+						$query[$k]->url = '';
+					} else {
+						$query[$k]->url = get_permalink( $v->ID );
+					}
 				}
 			}
 		} else {

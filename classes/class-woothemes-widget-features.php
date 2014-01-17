@@ -92,6 +92,10 @@ class Woothemes_Widget_Features extends WP_Widget {
 		if ( isset( $instance['per_row'] ) && ( 0 < count( $instance['per_row'] ) ) ) { $args['per_row'] = intval( $instance['per_row'] ); }
 		if ( isset( $instance['category'] ) && is_numeric( $instance['category'] ) ) $args['category'] = intval( $instance['category'] );
 
+		// Boolean values.
+		if ( isset( $instance['link_title'] ) && ( 1 == $instance['link_title'] ) ) { $args['link_title'] = true; } else { $args['link_title'] = false; }
+		if ( isset( $instance['custom_links_only'] ) && ( 1 == $instance['custom_links_only'] ) ) { $args['custom_links_only'] = true; } else { $args['custom_links_only'] = false; }
+
 		// Select boxes.
 		if ( isset( $instance['orderby'] ) && in_array( $instance['orderby'], array_keys( $this->get_orderby_options() ) ) ) { $args['orderby'] = $instance['orderby']; }
 		if ( isset( $instance['order'] ) && in_array( $instance['order'], array_keys( $this->get_order_options() ) ) ) { $args['order'] = $instance['order']; }
@@ -123,6 +127,10 @@ class Woothemes_Widget_Features extends WP_Widget {
 		$instance['per_row'] = intval( $new_instance['per_row'] );
 		$instance['category'] = intval( $new_instance['category'] );
 
+		/* The checkbox is returning a Boolean (true/false), so we check for that. */
+		$instance['link_title'] = (bool) esc_attr( $new_instance['link_title'] );
+		$instance['custom_links_only'] = (bool) esc_attr( $new_instance['custom_links_only'] );
+
 		/* The select box is returning a text value, so we escape it. */
 		$instance['orderby'] = esc_attr( $new_instance['orderby'] );
 		$instance['order'] = esc_attr( $new_instance['order'] );
@@ -149,7 +157,9 @@ class Woothemes_Widget_Features extends WP_Widget {
 			'specific_id' => '',
 			'size' => 50,
 			'per_row' => 3,
-			'category' => 0
+			'category' => 0,
+			'link_title' => true,
+			'custom_links_only' => false
 		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
@@ -200,6 +210,16 @@ class Woothemes_Widget_Features extends WP_Widget {
 				wp_dropdown_categories( $dropdown_args );
 			?>
 		</p>
+		<!-- Widget Link Titles: Checkbox Input -->
+       	<p>
+        	<input id="<?php echo $this->get_field_id( 'link_title' ); ?>" name="<?php echo $this->get_field_name( 'link_title' ); ?>" type="checkbox"<?php checked( $instance['link_title'], 1 ); ?> />
+        	<label for="<?php echo $this->get_field_id( 'link_title' ); ?>"><?php _e( 'Link Titles', 'woothemes-features' ); ?></label>
+	   	</p>
+	   	<!-- Widget Custom Links Only: Checkbox Input -->
+       	<p>
+        	<input id="<?php echo $this->get_field_id( 'custom_links_only' ); ?>" name="<?php echo $this->get_field_name( 'custom_links_only' ); ?>" type="checkbox"<?php checked( $instance['custom_links_only'], 1 ); ?> />
+        	<label for="<?php echo $this->get_field_id( 'custom_links_only' ); ?>"><?php _e( 'Link only Titles with Custom Links', 'woothemes-features' ); ?></label>
+	   	</p>
 		<!-- Widget ID: Text Input -->
 		<p>
 			<label for="<?php echo $this->get_field_id( 'specific_id' ); ?>"><?php _e( 'Specific ID (optional):', 'woothemes-features' ); ?></label>

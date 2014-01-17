@@ -35,6 +35,7 @@ To add arguments to this, please use any of the following arguments, using the s
 * 'size' => 50 (the pixel dimensions of the image)
 * 'per_row' => 3 (when creating rows, how many items display in a single row?)
 * 'link_title' => true (link the feature's title to it's permalink)
+* 'custom_links_only' => true (link the feature's title only if a custom URL is set)
 * 'title' => '' (an optional title)
 * 'before' => '&lt;div class="widget widget_woothemes_features"&gt;' (the starting HTML, wrapping the features)
 * 'after' => '&lt;/div&gt;' (the ending HTML, wrapping the features)
@@ -102,6 +103,10 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 
 == Upgrade Notice ==
 
+= 1.4.0 =
+* WordPress 3.8 support (3.8 is now the minimum required version).
+* Adds the ability to link only features with a custom URL set.
+
 = 1.3.1 =
 * Adds filters for the single features and features archives URL slugs
 * Adds a flush_rewrite_rules() call on plugin activation
@@ -132,9 +137,10 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 == Changelog ==
 
 = 1.4.0 =
-* 2014-01-02
-* UI tweaks for wp 3.8.
+* 2014-01-17
+* UI tweaks for WordPress 3.8.
 * Default args are now filterable via woothemes_features_default_args.
+* Adds the ability to link only features with a custom URL set.
 
 = 1.3.1 =
 * 2013-08-01.
