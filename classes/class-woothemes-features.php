@@ -420,8 +420,16 @@ class Woothemes_Features {
 		$query_args['order'] = $args['order'];
 		$query_args['suppress_filters'] = 0;
 
-		if ( is_numeric( $args['id'] ) && ( intval( $args['id'] ) > 0 ) ) {
-			$query_args['p'] = intval( $args['id'] );
+		$ids = explode( ',', $args['id'] );
+
+		if ( 0 < intval( $args['id'] ) && 0 < count( $ids ) ) {
+			$ids = array_map( 'intval', $ids );
+			if ( 1 == count( $ids ) && is_numeric( $ids[0] ) && ( 0 < intval( $ids[0] ) ) ) {
+				$query_args['p'] = intval( $args['id'] );
+			} else {
+				$query_args['ignore_sticky_posts'] = 1;
+				$query_args['post__in'] = $ids;
+			}
 		}
 
 		// Whitelist checks.
