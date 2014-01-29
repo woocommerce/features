@@ -418,7 +418,7 @@ class Woothemes_Features {
 		$query_args['numberposts'] = $args['limit'];
 		$query_args['orderby'] = $args['orderby'];
 		$query_args['order'] = $args['order'];
-		$query_args['suppress_filters'] = 0;
+		$query_args['suppress_filters'] = false;
 
 		if ( is_numeric( $args['id'] ) && ( intval( $args['id'] ) > 0 ) ) {
 			$query_args['p'] = intval( $args['id'] );

@@ -94,9 +94,16 @@ function woothemes_features ( $args = '' ) {
 				$image = get_the_post_thumbnail( $post->ID, $image_size );
 
 				$title = get_the_title();
+
+				if ( apply_filters( 'woothemes_features_disable_external_links', true ) ) {
+					$external = '';
+				} else {
+					$external = 'target="_blank"';
+				}
+
 				if ( true == $args['link_title'] && '' != $post->url ) {
-					$image = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $image . '</a>';
-					$title = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $title . '</a>';
+					$image = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '" ' . $external . '>' . $image . '</a>';
+					$title = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '" ' . $external . '>' . $title . '</a>';
 				}
 
 				// Optionally display the image, if it is available.
