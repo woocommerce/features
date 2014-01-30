@@ -37,7 +37,7 @@ function woothemes_features ( $args = '' ) {
 		'order' 			=> 'DESC',
 		'id' 				=> 0,
 		'echo' 				=> true,
-		'size' 				=> 50,
+		'size' 				=> 150,
 		'per_row' 			=> 3,
 		'link_title' 		=> true,
 		'custom_links_only' => true,
@@ -89,14 +89,21 @@ function woothemes_features ( $args = '' ) {
 					$class .= ' first';
 				}
 
-				$image_size = apply_filters( 'woothemes_features_image_size', 'thumbnail', $post );
+				$image_size = apply_filters( 'woothemes_features_image_size', array($args['size'], $args['size']), $post );
 
 				$image = get_the_post_thumbnail( $post->ID, $image_size );
 
 				$title = get_the_title();
+
+				if ( apply_filters( 'woothemes_features_disable_external_links', true ) ) {
+					$external = '';
+				} else {
+					$external = 'target="_blank"';
+				}
+
 				if ( true == $args['link_title'] && '' != $post->url ) {
-					$image = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $image . '</a>';
-					$title = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '">' . $title . '</a>';
+					$image = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '" ' . $external . '>' . $image . '</a>';
+					$title = '<a href="' . esc_url( $post->url ) . '" title="' . esc_attr( $title ) . '" ' . $external . '>' . $title . '</a>';
 				}
 
 				// Optionally display the image, if it is available.
@@ -158,16 +165,16 @@ function woothemes_features_shortcode ( $atts, $content = null ) {
 	$args = (array)$atts;
 
 	$defaults = array(
-		'limit' => 5,
-		'orderby' => 'menu_order',
-		'order' => 'DESC',
-		'id' => 0,
-		'echo' => true,
-		'size' => 50,
-		'per_row' => 3,
-		'link_title' => true,
+		'limit' 			=> 5,
+		'orderby' 			=> 'menu_order',
+		'order' 			=> 'DESC',
+		'id' 				=> 0,
+		'echo' 				=> true,
+		'size' 				=> 150,
+		'per_row' 			=> 3,
+		'link_title' 		=> true,
 		'custom_links_only' => false,
-		'category' => 0
+		'category' 			=> 0
 	);
 
 	$args = shortcode_atts( $defaults, $atts );

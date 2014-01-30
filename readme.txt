@@ -4,7 +4,7 @@ Donate link: http://woothemes.com/
 Tags: features, widget, shortcode, template-tag, services
 Requires at least: 3.4.2
 Tested up to: 3.8.0
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,12 @@ Installing "Features by WooThemes" can be done either by searching for "Features
 
 We encourage everyone to contribute their ideas, thoughts and code snippets. This can be done by forking the [repository over at GitHub](http://github.com/woothemes/features/).
 
+= Can I make feature links open in a new window / tab? =
+
+You sure can, just use the following snippet:
+
+`add_filter( 'woothemes_features_disable_external_links', '__return_false' );`
+
 == Screenshots ==
 
 1. The features management screen within the WordPress admin.
@@ -135,6 +141,12 @@ We encourage everyone to contribute their ideas, thoughts and code snippets. Thi
 * Initial release. Woo!
 
 == Changelog ==
+
+= 1.4.1 =
+* 2014-01-30
+* New - Filter to set feature links to open in a new window.
+* Fix - Widget image size option.
+* Tweak - Better WPML integration.
 
 = 1.4.0 =
 * 2014-01-17
