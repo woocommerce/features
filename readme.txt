@@ -143,9 +143,10 @@ You sure can, just use the following snippet:
 == Changelog ==
 
 = 1.4.1 =
-* 2014-01-29
-* New - Filter to set feature links to open in a new window
-* Fix - widget image size option
+* 2014-01-30
+* New - Filter to set feature links to open in a new window.
+* Fix - Widget image size option.
+* Tweak - Better WPML integration.
 
 = 1.4.0 =
 * 2014-01-17
