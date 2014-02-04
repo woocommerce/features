@@ -117,10 +117,10 @@ class Woothemes_Widget_Features extends WP_Widget {
 		if ( isset( $instance['link_title'] ) && $instance['link_title'] == true && $instance['custom_links_only'] == false ) {
 			$args['link_title'] = true;
 			$args['custom_links_only'] = false;
-		} elseif ( $instance['link_title'] == true && $instance['custom_links_only'] == true ) {
+		} elseif ( isset( $instance['link_title'] ) && $instance['link_title'] == true && isset( $instance['custom_links_only'] ) && $instance['custom_links_only'] == true ) {
 			$args['link_title'] = true;
 			$args['custom_links_only'] = true;
-		} elseif ( $instance['link_title'] == false && $instance['custom_links_only'] == false ) {
+		} elseif ( isset( $instance['link_title'] ) && $instance['link_title'] == false && isset( $instance['custom_links_only'] ) && $instance['custom_links_only'] == false ) {
 			$args['link_title'] = false;
 			$args['custom_links_only'] = false;
 		}
