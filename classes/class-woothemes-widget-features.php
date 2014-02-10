@@ -114,13 +114,14 @@ class Woothemes_Widget_Features extends WP_Widget {
 		}
 
 		// Boolean values.
-		if ( isset( $instance['link_title'] ) && ( 1 == $instance['link_title'] ) ) {
-			$args['link_title'] = true; } else { $args['link_title'] = false;
-		}
-
-		if ( isset( $instance['custom_links_only'] ) && ( 1 == $instance['custom_links_only'] ) ) {
+		if ( isset( $instance['link_title'] ) && $instance['link_title'] == true && $instance['custom_links_only'] == false ) {
+			$args['link_title'] = true;
+			$args['custom_links_only'] = false;
+		} elseif ( isset( $instance['link_title'] ) && $instance['link_title'] == true && isset( $instance['custom_links_only'] ) && $instance['custom_links_only'] == true ) {
+			$args['link_title'] = true;
 			$args['custom_links_only'] = true;
-		} else {
+		} elseif ( isset( $instance['link_title'] ) && $instance['link_title'] == false && isset( $instance['custom_links_only'] ) && $instance['custom_links_only'] == false ) {
+			$args['link_title'] = false;
 			$args['custom_links_only'] = false;
 		}
 
