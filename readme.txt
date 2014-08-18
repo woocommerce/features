@@ -143,7 +143,7 @@ You sure can, just use the following snippet:
 == Changelog ==
 
 = 1.4.3 =
-* 2014.03.14
+* 2014.08.18
 * Tweak - Made post type args filterable (props lkraav).
 
 = 1.4.2 =
