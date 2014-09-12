@@ -92,6 +92,11 @@ class Woothemes_Widget_Features extends WP_Widget {
 		// Add actions for plugins/themes to hook onto.
 		do_action( $this->woothemes_widget_cssclass . '_top' );
 
+		// Make sure all the instance settings are populated, even settings that didn't exist in previous versions
+		$defaults = $this->get_defaults();
+
+		$instance = wp_parse_args( (array) $instance, $defaults );
+
 		// Integer values.
 		if ( isset( $instance['limit'] ) && ( 0 < count( $instance['limit'] ) ) ) {
 			$args['limit'] = intval( $instance['limit'] );
@@ -183,18 +188,7 @@ class Woothemes_Widget_Features extends WP_Widget {
 
 		/* Set up some default widget settings. */
 		/* Make sure all keys are added here, even with empty string values. */
-		$defaults = array(
-			'title' 			=> '',
-			'limit' 			=> 5,
-			'orderby' 			=> 'menu_order',
-			'order' 			=> 'DESC',
-			'specific_id' 		=> '',
-			'size' 				=> 50,
-			'per_row' 			=> 3,
-			'category' 			=> 0,
-			'link_title' 		=> true,
-			'custom_links_only' => false
-		);
+		$defaults = $this->get_defaults();
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 ?>
@@ -262,6 +256,26 @@ class Woothemes_Widget_Features extends WP_Widget {
 		<p><small><?php _e( 'Display a specific feature, rather than a list.', 'woothemes-features' ); ?></small></p>
 <?php
 	} // End form()
+
+	/**
+	 * Get an array of the default widget (instance) settings.
+	 * @since  1.0.0
+	 * @return array
+	 */
+	protected function get_defaults( ){
+		return array(
+			'title' 			=> '',
+			'limit' 			=> 5,
+			'orderby' 			=> 'menu_order',
+			'order' 			=> 'DESC',
+			'specific_id' 		=> '',
+			'size' 				=> 50,
+			'per_row' 			=> 3,
+			'category' 			=> 0,
+			'link_title' 		=> true,
+			'custom_links_only' => false
+		);
+	} // End get_defaults()
 
 	/**
 	 * Get an array of the available orderby options.
