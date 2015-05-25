@@ -60,7 +60,7 @@ class Woothemes_Features {
 		}
 
 		add_action( 'after_setup_theme', array( $this, 'ensure_post_thumbnails_support' ) );
-		add_action( 'after_theme_setup', array( $this, 'register_image_sizes' ) );
+		add_action( 'after_setup_theme', array( $this, 'register_image_sizes' ) );
 	} // End __construct()
 
 	/**
