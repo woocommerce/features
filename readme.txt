@@ -4,7 +4,7 @@ Donate link: http://woothemes.com/
 Tags: features, widget, shortcode, template-tag, services
 Requires at least: 3.4.2
 Tested up to: 4.0
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -141,6 +141,10 @@ You sure can, just use the following snippet:
 * Initial release. Woo!
 
 == Changelog ==
+
+= 1.4.4 =
+* 2015.05.25
+* Fix - Action hook typo (props helgatheviking).
 
 = 1.4.3 =
 * 2014.08.18
