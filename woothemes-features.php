@@ -19,4 +19,4 @@ require_once( 'woothemes-features-template.php' );
 require_once( 'classes/class-woothemes-widget-features.php' );
 global $woothemes_features;
 $woothemes_features = new Woothemes_Features( __FILE__ );
-$woothemes_features->version = '1.4.3';
+$woothemes_features->version = '1.4.4';

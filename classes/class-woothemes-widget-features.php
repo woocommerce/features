@@ -57,7 +57,8 @@ class Woothemes_Widget_Features extends WP_Widget {
 			);
 
 		/* Create the widget. */
-		$this->WP_Widget( $this->woothemes_widget_idbase, $this->woothemes_widget_title, $widget_ops, $control_ops );
+		parent::__construct( $this->woothemes_widget_idbase, $this->woothemes_widget_title, $widget_ops, $control_ops );
+
 	} // End __construct()
 
 	/**
