@@ -30,6 +30,8 @@ class Woothemes_Widget_Features extends WP_Widget {
 	protected $woothemes_widget_description;
 	protected $woothemes_widget_idbase;
 	protected $woothemes_widget_title;
+	private $nomenclature;
+	private $preferred_names;
 
 	/**
 	 * Constructor function.
@@ -37,11 +39,24 @@ class Woothemes_Widget_Features extends WP_Widget {
 	 * @return  void
 	 */
 	public function __construct() {
+		$this->nomenclature = get_option( 'features_setting_name', 'feature' );
+		$this->preferred_names = array(	'feature' => array(	'singular' => __( 'Feature', 'woothemes-features' ),
+															'plural' => __( 'Features', 'woothemes-features' ),
+															'description' => __( 'Recent features listed on your site.', 'woothemes-features' ),
+															'options_description' => __( 'Display a specific feature, rather than a list.', 'woothemes-features' )
+															),
+										'service' => array(	'singular' => __( 'Service', 'woothemes-features' ),
+															'plural' => __( 'Services', 'woothemes-features' ),
+															'description' => __( 'Recent services listed on your site.', 'woothemes-features' ),
+															'options_description' => __( 'Display a specific service, rather than a list.', 'woothemes-features' )
+															)
+										);
+
 		/* Widget variable settings. */
 		$this->woothemes_widget_cssclass 	= 'widget_woothemes_features';
-		$this->woothemes_widget_description = __( 'Recent features listed on your site.', 'woothemes-features' );
+		$this->woothemes_widget_description = $this->preferred_names[$this->nomenclature]['description'];
 		$this->woothemes_widget_idbase 		= 'woothemes_features';
-		$this->woothemes_widget_title 		= __( 'Features', 'woothemes-features' );
+		$this->woothemes_widget_title 		= $this->preferred_names[$this->nomenclature]['plural'];
 
 		/* Widget settings. */
 		$widget_ops = array(
@@ -260,7 +275,7 @@ class Woothemes_Widget_Features extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'specific_id' ); ?>"><?php _e( 'Specific ID (optional):', 'woothemes-features' ); ?></label>
 			<input type="text" name="<?php echo $this->get_field_name( 'specific_id' ); ?>"  value="<?php echo $instance['specific_id']; ?>" class="widefat" id="<?php echo $this->get_field_id( 'specific_id' ); ?>" />
 		</p>
-		<p><small><?php _e( 'Display a specific feature, rather than a list.', 'woothemes-features' ); ?></small></p>
+		<p><small><?php echo $this->preferred_names[$this->nomenclature]['options_description']; ?></small></p>
 <?php
 	} // End form()
 

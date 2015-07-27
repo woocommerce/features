@@ -17,6 +17,8 @@ class Woothemes_Features {
 	private $assets_dir;
 	private $assets_url;
 	private $token;
+	private $nomenclature;
+	private $preferred_names;
 	public $version;
 	private $file;
 	public $taxonomy_category;
@@ -33,6 +35,15 @@ class Woothemes_Features {
 		$this->file = $file;
 		$this->assets_dir = trailingslashit( $this->dir ) . 'assets';
 		$this->assets_url = esc_url( trailingslashit( plugins_url( '/assets/', $file ) ) );
+		$this->nomenclature = get_option( 'features_setting_name', 'feature' );
+		$this->preferred_names = array(	'feature' => array(	'singular' => __( 'Feature', 'woothemes-features' ),
+															'plural' => __( 'Features', 'woothemes-features' )
+															),
+										'service' => array(	'singular' => __( 'Service', 'woothemes-features' ),
+															'plural' => __( 'Services', 'woothemes-features' )
+															)
+										);
+
 		$this->token = 'feature';
 
 		$this->load_plugin_textdomain();
@@ -57,6 +68,10 @@ class Woothemes_Features {
 				add_filter( 'manage_edit-' . $this->token . '_columns', array( $this, 'register_custom_column_headings' ), 10, 1 );
 				add_action( 'manage_posts_custom_column', array( $this, 'register_custom_columns' ), 10, 2 );
 			}
+
+			// Load Admin Settings
+			$this->admin_settings = new Woothemes_Features_Admin();
+
 		}
 
 		add_action( 'after_setup_theme', array( $this, 'ensure_post_thumbnails_support' ) );
@@ -75,24 +90,24 @@ class Woothemes_Features {
 	 */
 	public function register_post_type () {
 		$labels = array(
-			'name' => _x( 'Features', 'post type general name', 'woothemes-features' ),
-			'singular_name' => _x( 'Feature', 'post type singular name', 'woothemes-features' ),
+			'name' => _x( $this->preferred_names[$this->nomenclature]['plural'], 'post type general name', 'woothemes-features' ),
+			'singular_name' => _x( $this->preferred_names[$this->nomenclature]['singular'], 'post type singular name', 'woothemes-features' ),
 			'add_new' => _x( 'Add New', 'feature', 'woothemes-features' ),
-			'add_new_item' => sprintf( __( 'Add New %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
-			'edit_item' => sprintf( __( 'Edit %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
-			'new_item' => sprintf( __( 'New %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
-			'all_items' => sprintf( __( 'All %s', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
-			'view_item' => sprintf( __( 'View %s', 'woothemes-features' ), __( 'Feature', 'woothemes-features' ) ),
-			'search_items' => sprintf( __( 'Search %a', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
-			'not_found' =>  sprintf( __( 'No %s Found', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
-			'not_found_in_trash' => sprintf( __( 'No %s Found In Trash', 'woothemes-features' ), __( 'Features', 'woothemes-features' ) ),
+			'add_new_item' => sprintf( __( 'Add New %s', 'woothemes-features' ), __( $this->preferred_names[$this->nomenclature]['singular'], 'woothemes-features' ) ),
+			'edit_item' => sprintf( __( 'Edit %s', 'woothemes-features' ), __( $this->preferred_names[$this->nomenclature]['singular'], 'woothemes-features' ) ),
+			'new_item' => sprintf( __( 'New %s', 'woothemes-features' ), __( $this->preferred_names[$this->nomenclature]['singular'], 'woothemes-features' ) ),
+			'all_items' => sprintf( __( 'All %s', 'woothemes-features' ), __( $this->preferred_names[$this->nomenclature]['plural'], 'woothemes-features' ) ),
+			'view_item' => sprintf( __( 'View %s', 'woothemes-features' ), __( $this->preferred_names[$this->nomenclature]['singular'], 'woothemes-features' ) ),
+			'search_items' => sprintf( __( 'Search %a', 'woothemes-features' ), __( $this->preferred_names[$this->nomenclature]['plural'], 'woothemes-features' ) ),
+			'not_found' =>  sprintf( __( 'No %s Found', 'woothemes-features' ), __( $this->preferred_names[$this->nomenclature]['plural'], 'woothemes-features' ) ),
+			'not_found_in_trash' => sprintf( __( 'No %s Found In Trash', 'woothemes-features' ), __( $this->preferred_names[$this->nomenclature]['plural'], 'woothemes-features' ) ),
 			'parent_item_colon' => '',
-			'menu_name' => __( 'Features', 'woothemes-features' )
+			'menu_name' => __( $this->preferred_names[$this->nomenclature]['plural'], 'woothemes-features' )
 
 		);
 
-		$single_slug = apply_filters( 'woothemes_features_single_slug', _x( 'feature', 'single post url slug', 'woothemes-features' ) );
-		$archive_slug = apply_filters( 'woothemes_features_archive_slug', _x( 'features', 'post archive url slug', 'woothemes-features' ) );
+		$single_slug = apply_filters( 'woothemes_features_single_slug', _x( lcfirst( $this->preferred_names[$this->nomenclature]['singular'] ), 'single post url slug', 'woothemes-features' ) );
+		$archive_slug = apply_filters( 'woothemes_features_archive_slug', _x( lcfirst( $this->preferred_names[$this->nomenclature]['plural'] ), 'post archive url slug', 'woothemes-features' ) );
 
 		$args = array(
 			'labels' => $labels,
@@ -194,22 +209,40 @@ class Woothemes_Features {
 	public function updated_messages ( $messages ) {
 	  global $post, $post_ID;
 
-	  $messages[$this->token] = array(
-	    0 => '', // Unused. Messages start at index 1.
-	    1 => sprintf( __( 'Feature updated. %sView feature%s', 'woothemes-features' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', '</a>' ),
-	    2 => __( 'Custom field updated.', 'woothemes-features' ),
-	    3 => __( 'Custom field deleted.', 'woothemes-features' ),
-	    4 => __( 'Feature updated.', 'woothemes-features' ),
-	    /* translators: %s: date and time of the revision */
-	    5 => isset($_GET['revision']) ? sprintf( __( 'Feature restored to revision from %s', 'woothemes-features' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-	    6 => sprintf( __( 'Feature published. %sView feature%s', 'woothemes-features' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', '</a>' ),
-	    7 => __('Feature saved.'),
-	    8 => sprintf( __( 'Feature submitted. %sPreview feature%s', 'woothemes-features' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', '</a>' ),
-	    9 => sprintf( __( 'Feature scheduled for: %1$s. %2$sPreview feature%3$s', 'woothemes-features' ),
-	      // translators: Publish box date format, see http://php.net/date
-	      '<strong>' . date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) . '</strong>', '<a target="_blank" href="' . esc_url( get_permalink($post_ID) ) . '">', '</a>' ),
-	    10 => sprintf( __( 'Feature draft updated. %sPreview feature%s', 'woothemes-features' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', '</a>' ),
-	  );
+	  $message_options = array(	'feature' => array(
+												    0 => '', // Unused. Messages start at index 1.
+												    1 => sprintf( __( 'Feature updated. %sView feature%s', 'woothemes-features' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', '</a>' ),
+												    2 => __( 'Custom field updated.', 'woothemes-features' ),
+												    3 => __( 'Custom field deleted.', 'woothemes-features' ),
+												    4 => __( 'Feature updated.', 'woothemes-features' ),
+												    /* translators: %s: date and time of the revision */
+												    5 => isset($_GET['revision']) ? sprintf( __( 'Feature restored to revision from %s', 'woothemes-features' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+												    6 => sprintf( __( 'Feature published. %sView feature%s', 'woothemes-features' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', '</a>' ),
+												    7 => __('Feature saved.'),
+												    8 => sprintf( __( 'Feature submitted. %sPreview feature%s', 'woothemes-features' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', '</a>' ),
+												    9 => sprintf( __( 'Feature scheduled for: %1$s. %2$sPreview feature%3$s', 'woothemes-features' ),
+												      // translators: Publish box date format, see http://php.net/date
+												      '<strong>' . date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) . '</strong>', '<a target="_blank" href="' . esc_url( get_permalink($post_ID) ) . '">', '</a>' ),
+												    10 => sprintf( __( 'Feature draft updated. %sPreview feature%s', 'woothemes-features' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', '</a>' ),
+												  ),
+								'service' => array(
+												    0 => '', // Unused. Messages start at index 1.
+												    1 => sprintf( __( 'Service updated. %sView service%s', 'woothemes-features' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', '</a>' ),
+												    2 => __( 'Custom field updated.', 'woothemes-features' ),
+												    3 => __( 'Custom field deleted.', 'woothemes-features' ),
+												    4 => __( 'Service updated.', 'woothemes-features' ),
+												    /* translators: %s: date and time of the revision */
+												    5 => isset($_GET['revision']) ? sprintf( __( 'Service restored to revision from %s', 'woothemes-features' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+												    6 => sprintf( __( 'Service published. %sView service%s', 'woothemes-features' ), '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">', '</a>' ),
+												    7 => __('Service saved.'),
+												    8 => sprintf( __( 'Service submitted. %sPreview service%s', 'woothemes-features' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', '</a>' ),
+												    9 => sprintf( __( 'Service scheduled for: %1$s. %2$sPreview service%3$s', 'woothemes-features' ),
+												      // translators: Publish box date format, see http://php.net/date
+												      '<strong>' . date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) . '</strong>', '<a target="_blank" href="' . esc_url( get_permalink($post_ID) ) . '">', '</a>' ),
+												    10 => sprintf( __( 'Service draft updated. %sPreview service%s', 'woothemes-features' ), '<a target="_blank" href="' . esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) . '">', '</a>' ),
+												  )
+							);
+	  $messages[$this->token] = $message_options[$this->nomenclature];
 
 	  return $messages;
 	} // End updated_messages()
@@ -222,7 +255,10 @@ class Woothemes_Features {
 	 * @return void
 	 */
 	public function meta_box_setup () {
-		add_meta_box( 'feature-data', __( 'Feature Details', 'woothemes-features' ), array( $this, 'meta_box_content' ), $this->token, 'normal', 'high' );
+		$meta_box_options = array(	'feature' => __( 'Feature Details', 'woothemes-features' ),
+									'service' => __( 'Service Details', 'woothemes-features' )
+								);
+		add_meta_box( 'feature-data', $meta_box_options[$this->nomenclature], array( $this, 'meta_box_content' ), $this->token, 'normal', 'high' );
 	} // End meta_box_setup()
 
 	/**
@@ -321,7 +357,10 @@ class Woothemes_Features {
 	 */
 	public function enter_title_here ( $title ) {
 		if ( get_post_type() == $this->token ) {
-			$title = __( 'Enter the feature title here', 'woothemes-features' );
+			$title_options = array(	'feature' => __( 'Enter the feature title here', 'woothemes-features' ),
+									'service' => __( 'Enter the service title here', 'woothemes-features' )
+									);
+			$title = $title_options[$this->nomenclature];
 		}
 		return $title;
 	} // End enter_title_here()

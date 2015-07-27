@@ -17,6 +17,7 @@ require_once( 'classes/class-woothemes-features.php' );
 require_once( 'classes/class-woothemes-features-taxonomy.php' );
 require_once( 'woothemes-features-template.php' );
 require_once( 'classes/class-woothemes-widget-features.php' );
+if ( is_admin() ) { require_once( 'classes/class-woothemes-features-admin.php' ); }
 global $woothemes_features;
 $woothemes_features = new Woothemes_Features( __FILE__ );
 $woothemes_features->version = '1.4.4';
