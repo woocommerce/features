@@ -58,8 +58,9 @@ class Woothemes_Features {
 				add_action( 'manage_posts_custom_column', array( $this, 'register_custom_columns' ), 10, 2 );
 			}
 		}
-
+		
 		add_action( 'after_setup_theme', array( $this, 'ensure_post_thumbnails_support' ) );
+		add_action( 'after_setup_theme', array( $this, 'load_frontend_layout_css' ), 20 );
 		add_action( 'after_setup_theme', array( $this, 'register_image_sizes' ) );
 	} // End __construct()
 
@@ -337,6 +338,18 @@ class Woothemes_Features {
 		wp_register_style( 'woothemes-features-admin', esc_url( $this->assets_url . 'css/admin.css' ), array(), '1.0.2' );
 		wp_enqueue_style( 'woothemes-features-admin' );
 	} // End enqueue_admin_styles()
+	
+	/**
+	 * Enqueue post type layout CSS.
+	 *
+	 * @access public
+	 * @since   1.5.0
+	 * @return   void
+	 */
+	public function enqueue_layout_styles () {
+		wp_register_style( 'woothemes-features-layout', esc_url( $this->assets_url . 'css/layout.css' ), array(), '1.0.0' );
+		wp_enqueue_style( 'woothemes-features-layout' );
+	} // End enqueue_layout_styles()
 
 	/**
 	 * Get the settings for the custom fields.
@@ -551,4 +564,16 @@ class Woothemes_Features {
 	public function ensure_post_thumbnails_support () {
 		if ( ! current_theme_supports( 'post-thumbnails' ) ) { add_theme_support( 'post-thumbnails' ); }
 	} // End ensure_post_thumbnails_support()
+	
+	/**
+	 * Load the front-end layout styles for themes that don't include a built-in support for Features.
+	 * @since  1.5.0
+	 * @return  void
+	 */
+	public function load_frontend_layout_css () {
+		if ( ! current_theme_supports( 'features-by-woothemes' ) || apply_filters( 'woothemes_features_layout_css', false ) ) {
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_layout_styles' ), 10 );
+		}
+	} // End load_frontend_layout_css()
+	
 } // End Class
