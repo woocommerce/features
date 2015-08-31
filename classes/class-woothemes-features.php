@@ -58,7 +58,7 @@ class Woothemes_Features {
 				add_action( 'manage_posts_custom_column', array( $this, 'register_custom_columns' ), 10, 2 );
 			}
 		}
-		
+
 		add_action( 'after_setup_theme', array( $this, 'ensure_post_thumbnails_support' ) );
 		add_action( 'after_setup_theme', array( $this, 'load_frontend_layout_css' ), 20 );
 		add_action( 'after_setup_theme', array( $this, 'register_image_sizes' ) );
