@@ -89,7 +89,13 @@ function woothemes_features ( $args = '' ) {
 					$class .= ' first';
 				}
 
-				$image_size = apply_filters( 'woothemes_features_image_size', array($args['size'], $args['size']), $post );
+				if( is_numeric( $args['size'] ) ){
+					$image_size = array( $args['size'], $args['size'] );
+				} else {
+					$image_size = $args['size'];
+				}
+
+				$image_size = apply_filters( 'woothemes_features_image_size', $image_size, $post );
 
 				$image = get_the_post_thumbnail( $post->ID, $image_size );
 
