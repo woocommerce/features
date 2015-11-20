@@ -1,10 +1,10 @@
 === Features by WooThemes ===
-Contributors: woothemes, mattyza, jameskoster, hlashbrooke
+Contributors: woothemes, mattyza, jameskoster, hlashbrooke, jeffikus
 Donate link: http://woothemes.com/
 Tags: features, widget, shortcode, template-tag, services
 Requires at least: 3.4.2
-Tested up to: 4.0
-Stable tag: 1.4.4
+Tested up to: 4.3.1
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,6 +109,9 @@ You sure can, just use the following snippet:
 
 == Upgrade Notice ==
 
+= 1.5.0 =
+* Add argument to features widget to accept image pixel size or thumbnail name.
+
 = 1.4.4 =
 * Removes deprecated constructor call for WP_Widget, action hook fix.
 
@@ -144,6 +147,10 @@ You sure can, just use the following snippet:
 * Initial release. Woo!
 
 == Changelog ==
+
+= 1.5.0 =
+* 2015.11.20
+* Update - add argument to features widget for pixel size or image thumbnail name.
 
 = 1.4.4 =
 * 2015.07.06
