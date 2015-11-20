@@ -1,0 +1,114 @@
+/**
+ * Front-end layout styles.
+ */
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.widget_woothemes_features {
+  margin: 0;
+  zoom: 1;
+}
+.widget_woothemes_features:before,
+.widget_woothemes_features:after {
+  content: "";
+  display: table;
+}
+.widget_woothemes_features:after {
+  clear: both;
+}
+.widget_woothemes_features > h3 {
+  margin: 0 0 .8em;
+}
+.widget_woothemes_features .feature {
+  display: block;
+  text-align: center;
+  margin-bottom: 2em;
+}
+.widget_woothemes_features .feature h3 a {
+  color: inherit;
+}
+.widget_woothemes_features .feature img {
+  float: none;
+  margin: 0 auto 1em auto;
+  border: none;
+}
+.widget_woothemes_features .feature .feature-title {
+  margin: 0 0 .8em;
+  padding: 0;
+  font-size: 1.2em;
+  border: none;
+}
+@media only screen and (min-width: 980px) {
+  #main .widget_woothemes_features .columns-1 .feature {
+    width: 100%;
+    text-align: left;
+  }
+  #main .widget_woothemes_features .columns-1 .feature img {
+    float: left;
+    margin: 0 2em 0 1em;
+  }
+  #main .widget_woothemes_features .columns-2 .feature {
+    width: 47%;
+    text-align: left;
+  }
+  #main .widget_woothemes_features .columns-2 .feature img {
+    float: left;
+    margin: 0 2em 0 1em;
+  }
+  #main .widget_woothemes_features .columns-3 .feature {
+    width: 30%;
+    text-align: center;
+  }
+  #main .widget_woothemes_features .columns-3 .feature img {
+    float: none;
+  }
+  #main .widget_woothemes_features .columns-4 .feature {
+    width: 21%;
+    text-align: center;
+  }
+  #main .widget_woothemes_features .columns-4 .feature img {
+    float: none;
+  }
+  #main .widget_woothemes_features .columns-5 .feature {
+    width: 16%;
+    text-align: center;
+  }
+  #main .widget_woothemes_features .columns-5 .feature img {
+    float: none;
+  }
+  #main .widget_woothemes_features .columns-6 .feature {
+    width: 12.4%;
+    text-align: center;
+  }
+  #main .widget_woothemes_features .columns-6 .feature img {
+    float: none;
+  }
+  #main .widget_woothemes_features .feature {
+    float: left;
+    margin-right: 5%;
+  }
+  #main .widget_woothemes_features .feature.last {
+    margin-right: 0;
+  }
+  #main .widget_woothemes_features .feature .feature-content {
+    overflow: hidden;
+  }
+  #sidebar .widget_woothemes_features .columns-2 .feature,
+  #sidebar .widget_woothemes_features .columns-3 .feature,
+  #sidebar .widget_woothemes_features .columns-4 .feature,
+  #sidebar .widget_woothemes_features .columns-5 .feature,
+  #sidebar .widget_woothemes_features .columns-6 .feature {
+    width: 100%;
+    float: none;
+    margin-right: 0;
+    clear: both;
+  }
+}
