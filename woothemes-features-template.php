@@ -89,7 +89,13 @@ function woothemes_features ( $args = '' ) {
 					$class .= ' first';
 				}
 
-				$image_size = apply_filters( 'woothemes_features_image_size', array($args['size'], $args['size']), $post );
+				if( is_numeric( $args['size'] ) ){
+					$image_size = array( $args['size'], $args['size'] );
+				} else {
+					$image_size = $args['size'];
+				}
+
+				$image_size = apply_filters( 'woothemes_features_image_size', $image_size, $post );
 
 				$image = get_the_post_thumbnail( $post->ID, $image_size );
 
@@ -185,7 +191,16 @@ function woothemes_features_shortcode ( $atts, $content = null ) {
 	// Fix integers.
 	if ( isset( $args['limit'] ) ) $args['limit'] = intval( $args['limit'] );
 	if ( isset( $args['id'] ) ) $args['id'] = intval( $args['id'] );
-	if ( isset( $args['size'] ) &&  ( 0 < intval( $args['size'] ) ) ) $args['size'] = intval( $args['size'] );
+	
+	if ( isset( $args['size'] ) ){
+		if( is_numeric( $args['size'] ) ){
+			$args['size'] 		=  intval( $args['size'] );
+		} else {
+			$size = sanitize_title_with_dashes( $args['size'] );
+			$args['size'] 		= in_array( $size, get_intermediate_image_sizes() ) ? $size : 'thumbnail';
+		}
+	}
+
 	if ( isset( $args['per_row'] ) &&  ( 0 < intval( $args['per_row'] ) ) ) $args['per_row'] = intval( $args['per_row'] );
 	if ( isset( $args['category'] ) && is_numeric( $args['category'] ) ) $args['category'] = intval( $args['category'] );
 

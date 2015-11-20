@@ -102,8 +102,12 @@ class Woothemes_Widget_Features extends WP_Widget {
 			$args['id'] = intval( $instance['specific_id'] );
 		}
 
-		if ( isset( $instance['size'] ) && ( 0 < count( $instance['size'] ) ) ) {
-			$args['size'] = intval( $instance['size'] );
+		if ( isset( $instance['size'] ) ){
+			if( is_numeric( $instance['size'] ) && ( 0 < count( $instance['size'] ) ) ) {
+				$args['size'] = intval( $instance['size'] );
+			} else {
+				$args['size'] = $instance['size'];
+			}
 		}
 
 		if ( isset( $instance['per_row'] ) && ( 0 < count( $instance['per_row'] ) ) ) {
@@ -158,7 +162,14 @@ class Woothemes_Widget_Features extends WP_Widget {
 		/* Make sure the integer values are definitely integers. */
 		$instance['limit'] 			= intval( $new_instance['limit'] );
 		$instance['specific_id'] 	= intval( $new_instance['specific_id'] );
-		$instance['size'] 			= intval( $new_instance['size'] );
+		
+		if( is_numeric( $new_instance['size'] ) ){
+			$instance['size'] 		=  intval( $new_instance['size'] );
+		} else {
+			$size = sanitize_title_with_dashes( $new_instance['size'] );
+			$instance['size'] 		= in_array( $size, get_intermediate_image_sizes() ) ? $size : 'thumbnail';
+		}
+
 		$instance['per_row'] 		= intval( $new_instance['per_row'] );
 		$instance['category'] 		= intval( $new_instance['category'] );
 
@@ -211,7 +222,7 @@ class Woothemes_Widget_Features extends WP_Widget {
 		</p>
 		<!-- Widget Image Size: Text Input -->
 		<p>
-			<label for="<?php echo $this->get_field_id( 'size' ); ?>"><?php _e( 'Image Size (in pixels):', 'woothemes-features' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'size' ); ?>"><?php _e( 'Image Size (in pixels or image size name):', 'woothemes-features' ); ?></label>
 			<input type="text" name="<?php echo $this->get_field_name( 'size' ); ?>"  value="<?php echo $instance['size']; ?>" class="widefat" id="<?php echo $this->get_field_id( 'size' ); ?>" />
 		</p>
 		<!-- Widget Per Row: Text Input -->
