@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) || ! function_exists( 'woothemes_features' ) ) exit;
  * - form()
  * - get_orderby_options()
  */
-class Woothemes_Widget_Features extends WP_Widget {
+class WooThemes_Widget_Features extends WP_Widget {
 	protected $woothemes_widget_cssclass;
 	protected $woothemes_widget_description;
 	protected $woothemes_widget_idbase;
@@ -162,7 +162,7 @@ class Woothemes_Widget_Features extends WP_Widget {
 		/* Make sure the integer values are definitely integers. */
 		$instance['limit'] 			= intval( $new_instance['limit'] );
 		$instance['specific_id'] 	= intval( $new_instance['specific_id'] );
-		
+
 		if( is_numeric( $new_instance['size'] ) ){
 			$instance['size'] 		=  intval( $new_instance['size'] );
 		} else {
