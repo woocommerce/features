@@ -361,7 +361,7 @@ class Woothemes_Features {
 
 		$fields['url'] = array(
 		    'name' => __( 'URL', 'woothemes-features' ),
-		    'description' => __( 'Enter a URL that applies to this feature (for example: http://woothemes.com/).', 'woothemes-features' ),
+		    'description' => __( 'Enter a URL that applies to this feature (for example: https://woocommerce.com/).', 'woothemes-features' ),
 		    'type' => 'url',
 		    'default' => '',
 		    'section' => 'info'
