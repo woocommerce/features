@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Features
- * Plugin URI: http://woothemes.com/
+ * Plugin URI: https://woocommerce.com/
  * Description: Hi, I'm your feature showcase plugin for WordPress. Show off what features your company, product or service offers, using our shortcode, widget or template tag.
  * Author: WooThemes
  * Version: 1.5.0
- * Author URI: http://woothemes.com/
+ * Author URI: https://woocommerce.com/
  * Text Domain: features-by-woothemes
  *
  * @package WordPress
