@@ -261,7 +261,7 @@ msgstr ""
 
 #: classes/class-woothemes-features.php:351
 #@ woothemes-features
-msgid "Enter a URL that applies to this feature (for example: http://woothemes.com/)."
+msgid "Enter a URL that applies to this feature (for example: https://woocommerce.com/)."
 msgstr ""
 
 #: classes/class-woothemes-widget-features.php:174
