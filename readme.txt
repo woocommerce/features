@@ -1,9 +1,9 @@
 === Features by WooThemes ===
 Contributors: woothemes, mattyza, jameskoster, hlashbrooke, jeffikus, danieldudzic
-Donate link: http://woothemes.com/
+Donate link: https://woocommerce.com/
 Tags: features, widget, shortcode, template-tag, services
 Requires at least: 3.4.2
-Tested up to: 4.3.1
+Tested up to: 4.7.1
 Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -14,9 +14,9 @@ Show off what features your company, product or service offers, using our shortc
 
 "Features by WooThemes" is a clean and easy-to-use features showcase management system for WordPress. Load in the features your product, company or services offers, and display them via a shortcode, widget or template tag on your website.
 
-Looking for a helping hand? [View plugin documentation](http://wordpress.org/extend/plugins/features-by-woothemes/other_notes/).
+Looking for a helping hand? [View plugin documentation](https://wordpress.org/plugins/features-by-woothemes/other_notes/).
 
-Looking to contribute code to this plugin? [Fork the repository over at GitHub](http://github.com/woothemes/features/).
+Looking to contribute code to this plugin? [Fork the repository over at GitHub](https://github.com/woocommerce/features/).
 (submit pull requests to the "develop" branch)
 
 == Usage ==
@@ -95,7 +95,7 @@ Installing "Features by WooThemes" can be done either by searching for "Features
 
 = How do I contribute? =
 
-We encourage everyone to contribute their ideas, thoughts and code snippets. This can be done by forking the [repository over at GitHub](http://github.com/woothemes/features/).
+We encourage everyone to contribute their ideas, thoughts and code snippets. This can be done by forking the [repository over at GitHub](https://github.com/woocommerce/features/).
 
 = Can I make feature links open in a new window / tab? =
 
